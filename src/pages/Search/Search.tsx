@@ -1,6 +1,4 @@
 import { Button, Select, TextInput } from 'flowbite-react'
-import React from 'react'
-
 export default function Search() {
   return (
     <div className='flex flex-col md:flex-row'>
