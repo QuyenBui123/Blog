@@ -12,7 +12,7 @@ export default function SignIn() {
         to='/'
         className='font-bold dark:text-white text-4xl'>
         <span className='px-2 py-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg text-white'>
-          Sahand's
+          Meta
         </span>
         Blog
       </Link>
@@ -22,24 +22,20 @@ export default function SignIn() {
         <div className='flex-1'>
           <form className='flex flex-col gap-4'>
             <div className=''>
-              <Label value='Your username' />
-              <TextInput type='text ' placeholder='Username' id='username'/>
-            </div>
-            <div className=''>
               <Label value='Your email' />
               <TextInput type='text ' placeholder='Email' id='email'/>
             </div>
             <div className=''>
               <Label value='Your Password' />
-              <TextInput type='text ' placeholder='Password' id='password'/>
+              <TextInput type='text ' placeholder='*********' id='password'/>
             </div>
             <Button gradientDuoTone='purpleToPink' type='submit'>
-              Sign Up
+              Sign In
             </Button>
           </form>
-          <div>
-            <span>Have an account?</span>
-            <Link to='/SignIn'>
+          <div className='mt-2'>
+            <span >Don't Have an account?</span>
+            <Link to='/SignUp' className='text-blue-500'> Sign Up
             </Link>
           </div>
         </div>

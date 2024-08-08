@@ -4,6 +4,7 @@ import Dashboard from "./pages/Dashboard";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import About from "./pages/About";
+import Search from "./pages/Search";
 export default function useRouterElement(){
     const routerElement=useRoutes([
         {path:'/',
@@ -24,6 +25,9 @@ export default function useRouterElement(){
         {
             path:'/About',
             element: <About/>
+        },{
+            path:'/Search',
+            element:<Search/>
         }
     ])
     return routerElement
