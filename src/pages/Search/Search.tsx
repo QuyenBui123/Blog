@@ -1,4 +1,5 @@
 import { Button, Select, TextInput } from 'flowbite-react'
+import { Link } from 'react-router-dom'
 export default function Search() {
   return (
     <div className='flex flex-col md:flex-row'>
@@ -45,23 +46,85 @@ export default function Search() {
         <h1 className='text-3xl font-semibold sm:border-b border-gray-500 p-3 mt-5 '>
           Posts results:
         </h1>
-        {/* <div className='p-7 flex flex-wrap gap-4'>
-          {!loading && posts.length === 0 && (
-            <p className='text-xl text-gray-500'>No posts found.</p>
-          )}
-          {loading && <p className='text-xl text-gray-500'>Loading...</p>}
-          {!loading &&
-            posts &&
-            posts.map((post) => <PostCard key={post._id} post={post} />)}
-          {showMore && (
-            <button
-              onClick={handleShowMore}
-              className='text-teal-500 text-lg hover:underline p-7 w-full'
-            >
-              Show More
-            </button>
-          )}
-        </div> */}
+        <div className='p-7 flex flex-wrap gap-4'>
+            
+            <div className='group relative w-full border border-teal-500 hover:border-2 h-[400px] overflow-hidden rounded-lg sm:w-[430px] transition-all'>
+              <Link to={`/`}>
+                <img
+                  src={'https://png.pngtree.com/png-vector/20220810/ourmid/pngtree-blogging-concept-picture-writer-laptop-png-image_5722986.png'}
+                  alt='post cover'
+                  className='h-[260px] w-full  object-cover group-hover:h-[200px] transition-all duration-300 z-20'
+                />
+              </Link>
+              <div className='p-3 flex flex-col gap-2'>
+                <p className='text-lg font-semibold line-clamp-2'>Test port</p>
+                <span className='italic text-sm'>Technology</span>
+                <Link
+                  to={`/`}
+                  className='z-10 group-hover:bottom-0 absolute bottom-[-200px] left-0 right-0 border border-teal-500 text-teal-500 hover:bg-teal-500 hover:text-white transition-all duration-300 text-center py-2 rounded-md !rounded-tl-none m-2'
+                >
+                  Read article
+                </Link>
+              </div>
+            </div>
+            <div className='group relative w-full border border-teal-500 hover:border-2 h-[400px] overflow-hidden rounded-lg sm:w-[430px] transition-all'>
+              <Link to={`/`}>
+                <img
+                  src={'https://png.pngtree.com/png-vector/20220810/ourmid/pngtree-blogging-concept-picture-writer-laptop-png-image_5722986.png'}
+                  alt='post cover'
+                  className='h-[260px] w-full  object-cover group-hover:h-[200px] transition-all duration-300 z-20'
+                />
+              </Link>
+              <div className='p-3 flex flex-col gap-2'>
+                <p className='text-lg font-semibold line-clamp-2'>Test port</p>
+                <span className='italic text-sm'>Technology</span>
+                <Link
+                  to={`/`}
+                  className='z-10 group-hover:bottom-0 absolute bottom-[-200px] left-0 right-0 border border-teal-500 text-teal-500 hover:bg-teal-500 hover:text-white transition-all duration-300 text-center py-2 rounded-md !rounded-tl-none m-2'
+                >
+                  Read article
+                </Link>
+              </div>
+            </div>
+            <div className='group relative w-full border border-teal-500 hover:border-2 h-[400px] overflow-hidden rounded-lg sm:w-[430px] transition-all'>
+              <Link to={`/`}>
+                <img
+                  src={'https://png.pngtree.com/png-vector/20220810/ourmid/pngtree-blogging-concept-picture-writer-laptop-png-image_5722986.png'}
+                  alt='post cover'
+                  className='h-[260px] w-full  object-cover group-hover:h-[200px] transition-all duration-300 z-20'
+                />
+              </Link>
+              <div className='p-3 flex flex-col gap-2'>
+                <p className='text-lg font-semibold line-clamp-2'>Test port</p>
+                <span className='italic text-sm'>Technology</span>
+                <Link
+                  to={`/`}
+                  className='z-10 group-hover:bottom-0 absolute bottom-[-200px] left-0 right-0 border border-teal-500 text-teal-500 hover:bg-teal-500 hover:text-white transition-all duration-300 text-center py-2 rounded-md !rounded-tl-none m-2'
+                >
+                  Read article
+                </Link>
+              </div>
+            </div>
+            <div className='group relative w-full border border-teal-500 hover:border-2 h-[400px] overflow-hidden rounded-lg sm:w-[430px] transition-all'>
+              <Link to={`/`}>
+                <img
+                  src={'https://png.pngtree.com/png-vector/20220810/ourmid/pngtree-blogging-concept-picture-writer-laptop-png-image_5722986.png'}
+                  alt='post cover'
+                  className='h-[260px] w-full  object-cover group-hover:h-[200px] transition-all duration-300 z-20'
+                />
+              </Link>
+              <div className='p-3 flex flex-col gap-2'>
+                <p className='text-lg font-semibold line-clamp-2'>Test port</p>
+                <span className='italic text-sm'>Technology</span>
+                <Link
+                  to={`/`}
+                  className='z-10 group-hover:bottom-0 absolute bottom-[-200px] left-0 right-0 border border-teal-500 text-teal-500 hover:bg-teal-500 hover:text-white transition-all duration-300 text-center py-2 rounded-md !rounded-tl-none m-2'
+                >
+                  Read article
+                </Link>
+              </div>
+            </div>
+                    </div>
       </div>
     </div>
   )

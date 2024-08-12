@@ -1,8 +1,18 @@
 import { Button, Navbar, TextInput } from 'flowbite-react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { AiOutlineSearch,} from "react-icons/ai";
+import { useState } from 'react';
 
 export default function Headers() {
+  const [searchTerm, setSearchTerm] = useState('');
+  const navigate = useNavigate();
+
+  const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (searchTerm) {
+      navigate(`/search?q=${encodeURIComponent(searchTerm)}`);
+    }
+  };
   return (
     <Navbar className='border-b-2'>
       <Link
@@ -14,12 +24,14 @@ export default function Headers() {
         </span>
         Blog
       </Link>
-      <form>
+      <form onSubmit={handleSearchSubmit} className='flex items-center p-3'>
         <TextInput
           type='text'
           placeholder='Search...'
           rightIcon={AiOutlineSearch}
           className='hidden lg:inline'
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
         />
       </form>
       <Button className='w-12 h-10 lg:hidden' color='gray' pill>
@@ -27,7 +39,7 @@ export default function Headers() {
       </Button>
       <div className='flex gap-2 md:order-2'>
           <Link to='/SignIn'>
-            <Button gradientDuoTone='purpleToBlue' outline>
+            <Button gradientDuoTone='purpleToBlue' pill>
               Sign In
             </Button>
           </Link>
@@ -41,6 +53,7 @@ export default function Headers() {
           <Link to='/about'>About</Link>
         </Navbar.Link>
       </Navbar.Collapse>
+      
     </Navbar>
   )
 }
