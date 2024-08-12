@@ -32,6 +32,10 @@ export default function useRouterElement(){
         },{
             path:'/PortPage',
             element:<PortPage/>
+        },
+        {
+            path:'/Dashboard',
+            element:<Dashboard/>
         }
     ])
     return routerElement
