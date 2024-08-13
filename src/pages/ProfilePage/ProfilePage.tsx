@@ -1,28 +1,63 @@
+import { useState } from 'react';
+import {FaUserCheck, FaUserPlus } from 'react-icons/fa';
+import {  Avatar, Sidebar } from 'flowbite-react';
+import About from '../About';
+import { Link } from 'react-router-dom';
+import ThreeDotMenu from '../../components/ThreeDotMenu';
 
-import { Link } from 'react-router-dom'
-import ThreeDotMenu from '../../components/ThreeDotMenu'
+const ProfilePage = () => {
+    const [isFollowing, setIsFollowing] = useState(false);
 
-export default function Home() {
+  const handleFollowClick = () => {
+    setIsFollowing(!isFollowing);
+  };
   return (
-    <div>
-      <div className='flex flex-col text-center gap-6 p-28 px-3 max-w-6xl mx-auto '>
-        <h1 className='text-3xl font-bold lg:text-6xl'>Welcome to my Blog</h1>
-        <p className='text-gray-500 text-xs sm:text-sm'>
-          Here you'll find a variety of articles and tutorials on topics such as
-          web development, software engineering, and programming languages.
-        </p>
-        <Link
-          to='/search'
-          className='text-xs sm:text-sm text-teal-500 font-bold hover:underline'
-        >
-          View all posts
-        </Link>
+    <div className="min-h-screen bg-gray-100">
+      {/* Cover Photo */}
+      <div className="relative bg-gray-800 h-48">
+        <img
+          src="https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/07/anh-bia-dep-10.jpg"
+          alt="Cover"
+          className="object-cover w-full h-48"
+        />
       </div>
-      {/* <div className='p-3 bg-amber-100 dark:bg-slate-700'>
-        <CallToAction />
-      </div> */}
-
-      <div className='max-w-6xl mx-auto p-3 flex flex-col gap-8 py-7'>
+      
+        {/* Profile Section */}
+      <div className="flex flex-col p-4 mt-[-5rem] transform">
+        {/* Profile Picture */}
+        <div className='flex mt-5'> 
+        {/* <img
+          src="https://dthezntil550i.cloudfront.net/n4/latest/n41611050401464760001833695/1280_960/1128ba0a-efcb-4370-97cf-7704d4c0555d.png"
+          alt="Profile"
+          className="w-32 h-32  rounded-full border-4 border-white shadow-md"
+        /> */}
+        <div className="flex flex-wrap gap-2">
+      <Avatar img="https://dthezntil550i.cloudfront.net/n4/latest/n41611050401464760001833695/1280_960/1128ba0a-efcb-4370-97cf-7704d4c0555d.png" size="xl" rounded bordered />
+    </div>
+        {/* Username and Bio */}
+        <div className="mt-16 ml-4 ">
+          <h1 className="text-2xl font-bold">Test</h1>
+          
+        </div>
+      </div>
+      <div className='flex justify-end   '>
+        {/* Follow Button */}
+        <button 
+            onClick={handleFollowClick} 
+            className={` w-auto h-8 px-4 py-2 rounded-full flex items-center transition-colors duration-300 
+            ${isFollowing ? 'bg-green-500 text-white' : 'bg-blue-500 text-white hover:bg-blue-600'}`}>
+            {isFollowing ? <FaUserCheck className="mr-2" /> : <FaUserPlus className="mr-2" />} 
+            {isFollowing ? 'Following' : 'Follow'}
+          </button>
+      </div>
+      </div>
+      <div className='min-h-screen flex flex-col md:flex-row'>
+      <div className='md:w-56'>
+      <Sidebar className='w-full md:w-56 text-center'>
+      <About/>
+    </Sidebar>
+    </div>
+    <div className='max-w-6xl mx-auto ml-5 p-3 flex flex-col gap-8 py-7'>
       <div className='flex flex-col gap-6'>
             <h2 className='text-2xl font-semibold text-center'>Recent Posts</h2>
             {/*port card  */}
@@ -116,6 +151,11 @@ export default function Home() {
             </Link> 
       </div>
       </div>
+        
     </div>
-  )
-}
+    </div>
+    
+  );
+};
+
+export default ProfilePage;

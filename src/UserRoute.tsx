@@ -6,6 +6,8 @@ import SignUp from "./pages/SignUp";
 import About from "./pages/About";
 import Search from "./pages/Search";
 import PortPage from "./pages/port-page";
+import ThreeDotMenu from "./components/ThreeDotMenu";
+import ProfilePage from "./pages/ProfilePage";
 export default function useRouterElement(){
     const routerElement=useRoutes([
         {path:'/',
@@ -36,6 +38,12 @@ export default function useRouterElement(){
         {
             path:'/Dashboard',
             element:<Dashboard/>
+        },{
+            path:'/Three',
+            element:<ThreeDotMenu/>
+        },{
+            path:'/ProfilePage',
+            element:<ProfilePage/>
         }
     ])
     return routerElement

@@ -118,7 +118,8 @@ export default function Header() {
             }
           >
             <Dropdown.Header>
-              <span className='block text-sm'>{mockUser.username}</span>
+              <Link to='/ProfilePage'><span className='block text-sm'>{mockUser.username}</span></Link>
+              
               <span className='block text-sm font-medium truncate'>
                 {mockUser.email}
               </span>
@@ -139,13 +140,13 @@ export default function Header() {
         <Navbar.Toggle />
       </div>
       <Navbar.Collapse>
-        <Navbar.Link active={path === '/'} as={'div'}>
+        <Navbar.Link active={path === '/'} >
           <Link to='/'>Home</Link>
         </Navbar.Link>
-        <Navbar.Link active={path === '/about'} as={'div'}>
+        <Navbar.Link active={path === '/about'} >
           <Link to='/about'>About</Link>
         </Navbar.Link>
-        <Navbar.Link active={path === '/projects'} as={'div'}>
+        <Navbar.Link active={path === '/projects'} >
           <Link to='/projects'>Projects</Link>
         </Navbar.Link>
       </Navbar.Collapse>
