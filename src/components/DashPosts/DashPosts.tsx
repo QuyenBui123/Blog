@@ -100,7 +100,7 @@ export default function DashPosts() {
               Show more
             </button>
           )}
-        <p>You have no posts yet!</p>
+        {/* <p>You have no posts yet!</p> */}
       
       <Modal
         show={showModal}
