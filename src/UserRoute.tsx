@@ -8,6 +8,7 @@ import Search from "./pages/Search";
 import PortPage from "./pages/port-page";
 import ThreeDotMenu from "./components/ThreeDotMenu";
 import ProfilePage from "./pages/ProfilePage";
+import PostCard from "./components/PostCard";
 export default function useRouterElement(){
     const routerElement=useRoutes([
         {path:'/',
@@ -44,6 +45,9 @@ export default function useRouterElement(){
         },{
             path:'/ProfilePage',
             element:<ProfilePage/>
+        },{
+            path:"/PostCard",
+            element:<PostCard/>
         }
     ])
     return routerElement

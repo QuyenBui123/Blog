@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import {FaUserCheck, FaUserPlus } from 'react-icons/fa';
-import {  Avatar, Sidebar } from 'flowbite-react';
+import {  Avatar, Button, HR, Sidebar } from 'flowbite-react';
 import About from '../About';
 import { Link } from 'react-router-dom';
-import ThreeDotMenu from '../../components/ThreeDotMenu';
+import PostCard from '../../components/PostCard';
 
 const ProfilePage = () => {
     const [isFollowing, setIsFollowing] = useState(false);
@@ -42,107 +42,27 @@ const ProfilePage = () => {
       </div>
       <div className='flex justify-end   '>
         {/* Follow Button */}
-        <button 
+        <Button 
             onClick={handleFollowClick} 
             className={` w-auto h-8 px-4 py-2 rounded-full flex items-center transition-colors duration-300 
             ${isFollowing ? 'bg-green-500 text-white' : 'bg-blue-500 text-white hover:bg-blue-600'}`}>
-            {isFollowing ? <FaUserCheck className="mr-2" /> : <FaUserPlus className="mr-2" />} 
+            {isFollowing ? <FaUserCheck className="mr-2 " /> : <FaUserPlus className="mr-2" />} 
             {isFollowing ? 'Following' : 'Follow'}
-          </button>
+          </Button>
       </div>
+      <HR/>
       </div>
       <div className='min-h-screen flex flex-col md:flex-row'>
       <div className='md:w-56'>
-      <Sidebar className='w-full md:w-56 text-center'>
+      <Sidebar className='w-full md:w-56 text-center '>
       <About/>
     </Sidebar>
+    <HR className='block md:hidden'/>
     </div>
     <div className='max-w-6xl mx-auto ml-5 p-3 flex flex-col gap-8 py-7'>
       <div className='flex flex-col gap-6'>
             <h2 className='text-2xl font-semibold text-center'>Recent Posts</h2>
-            {/*port card  */}
-      <div className='flex flex-wrap gap-6 '>
-            
-        <div className='group relative w-full border border-teal-500 hover:border-2 h-[400px] overflow-hidden rounded-lg sm:w-[430px] transition-all'>
-      <Link to={`/PortPage`}>
-        <img
-          src={'https://png.pngtree.com/png-vector/20220810/ourmid/pngtree-blogging-concept-picture-writer-laptop-png-image_5722986.png'}
-          alt='post cover'
-          className='h-[260px] w-full  object-cover group-hover:h-[200px] transition-all duration-300 z-20'
-        />
-        
-      </Link>
-      <div className='p-3 flex flex-col gap-2'>
-        <div className='flex justify-between'><p className='text-lg font-semibold line-clamp-2'>Test port </p><ThreeDotMenu/></div>
-        <span className='italic text-sm'>Technology</span>
-        <Link
-          to={`/PortPage`}
-          className='z-10 group-hover:bottom-0 absolute bottom-[-200px] left-0 right-0 border border-teal-500 text-teal-500 hover:bg-teal-500 hover:text-white transition-all duration-300 text-center py-2 rounded-md !rounded-tl-none m-2'
-        >
-          Read article
-        </Link>
-      </div>
-    </div>
-    <div className='group relative w-full border border-teal-500 hover:border-2 h-[400px] overflow-hidden rounded-lg sm:w-[430px] transition-all'>
-      <Link to={`/PortPage`}>
-        <img
-          src={'https://png.pngtree.com/png-vector/20220810/ourmid/pngtree-blogging-concept-picture-writer-laptop-png-image_5722986.png'}
-          alt='post cover'
-          className='h-[260px] w-full  object-cover group-hover:h-[200px] transition-all duration-300 z-20'
-        />
-      </Link>
-      <div className='p-3 flex flex-col gap-2'>
-      <div className='flex justify-between'><p className='text-lg font-semibold line-clamp-2'>Test port </p><ThreeDotMenu/></div>
-        <span className='italic text-sm'>Technology</span>
-
-        <Link
-          to={`/PortPage`}
-          className='z-10 group-hover:bottom-0 absolute bottom-[-200px] left-0 right-0 border border-teal-500 text-teal-500 hover:bg-teal-500 hover:text-white transition-all duration-300 text-center py-2 rounded-md !rounded-tl-none m-2'
-        >
-          Read article
-        </Link>
-      </div>
-    </div>
-    <div className='group relative w-full border border-teal-500 hover:border-2 h-[400px] overflow-hidden rounded-lg sm:w-[430px] transition-all'>
-      <Link to={`/PortPage`}>
-        <img
-          src={'https://png.pngtree.com/png-vector/20220810/ourmid/pngtree-blogging-concept-picture-writer-laptop-png-image_5722986.png'}
-          alt='post cover'
-          className='h-[260px] w-full  object-cover group-hover:h-[200px] transition-all duration-300 z-20'
-        />
-      </Link>
-      <div className='p-3 flex flex-col gap-2'>
-      <div className='flex justify-between'><p className='text-lg font-semibold line-clamp-2'>Test port </p><ThreeDotMenu/></div>
-        <span className='italic text-sm'>Technology</span>
-        <Link
-          to={`/PortPage`}
-          className='z-10 group-hover:bottom-0 absolute bottom-[-200px] left-0 right-0 border border-teal-500 text-teal-500 hover:bg-teal-500 hover:text-white transition-all duration-300 text-center py-2 rounded-md !rounded-tl-none m-2'
-        >
-          Read article
-        </Link>
-      </div>
-    </div>
-    <div className='group relative w-full border border-teal-500 hover:border-2 h-[400px] overflow-hidden rounded-lg sm:w-[430px] transition-all'>
-      <Link to={`/PortPage`}>
-        <img
-          src={'https://png.pngtree.com/png-vector/20220810/ourmid/pngtree-blogging-concept-picture-writer-laptop-png-image_5722986.png'}
-          alt='post cover'
-          className='h-[260px] w-full  object-cover group-hover:h-[200px] transition-all duration-300 z-20'
-        />
-      </Link>
-      <div className='p-3 flex flex-col gap-2'>
-      <div className='flex justify-between'><p className='text-lg font-semibold line-clamp-2'>Test port </p><ThreeDotMenu/></div>
-        <span className='italic text-sm'>Technology</span>
-        <Link
-          to={`/PortPage`}
-          className='z-10 group-hover:bottom-0 absolute bottom-[-200px] left-0 right-0 border border-teal-500 text-teal-500 hover:bg-teal-500 hover:text-white transition-all duration-300 text-center py-2 rounded-md !rounded-tl-none m-2'
-        >
-          Read article
-        </Link>
-      </div>
-    </div>
-            </div>
-      {/*port card  */}
+            <PostCard/>
             <Link
               to={'/search'}
               className='text-lg text-teal-500 hover:underline text-center'
