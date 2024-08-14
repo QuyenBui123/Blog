@@ -11,7 +11,7 @@ export default function PostCard() {
   return (
     <div className='flex flex-wrap gap-6 '>
         <div className='group relative w-full border border-teal-500 hover:border-2 h-[400px] overflow-hidden rounded-lg sm:w-[430px] transition-all'>
-      <Link to={`/PortPage`}>
+      <Link to={`/PostPage`}>
         <img
           src={'https://png.pngtree.com/png-vector/20220810/ourmid/pngtree-blogging-concept-picture-writer-laptop-png-image_5722986.png'}
           alt='post cover'
@@ -22,7 +22,7 @@ export default function PostCard() {
         <div className='flex justify-between'><p className='text-lg font-semibold line-clamp-2'>{mockPost.postname} </p><ThreeDotMenu/></div>
         <span className='italic text-sm'>{mockPost.category}</span>
         <Link
-          to={`/PortPage`}
+          to={`/PostPage`}
           className='z-10 group-hover:bottom-0 absolute bottom-[-200px] left-0 right-0 border border-teal-500 text-teal-500 hover:bg-teal-500 hover:text-white transition-all duration-300 text-center py-2 rounded-md !rounded-tl-none m-2'
         >
           Read article
@@ -30,7 +30,7 @@ export default function PostCard() {
       </div>
     </div>
     <div className='group relative w-full border border-teal-500 hover:border-2 h-[400px] overflow-hidden rounded-lg sm:w-[430px] transition-all'>
-      <Link to={`/PortPage`}>
+      <Link to={`/PostPage`}>
         <img
           src={'https://png.pngtree.com/png-vector/20220810/ourmid/pngtree-blogging-concept-picture-writer-laptop-png-image_5722986.png'}
           alt='post cover'
@@ -42,7 +42,7 @@ export default function PostCard() {
         <span className='italic text-sm'>{mockPost.category}</span>
 
         <Link
-          to={`/PortPage`}
+          to={`/PostPage`}
           className='z-10 group-hover:bottom-0 absolute bottom-[-200px] left-0 right-0 border border-teal-500 text-teal-500 hover:bg-teal-500 hover:text-white transition-all duration-300 text-center py-2 rounded-md !rounded-tl-none m-2'
         >
           Read article
@@ -50,7 +50,7 @@ export default function PostCard() {
       </div>
     </div>
     <div className='group relative w-full border border-teal-500 hover:border-2 h-[400px] overflow-hidden rounded-lg sm:w-[430px] transition-all'>
-      <Link to={`/PortPage`}>
+      <Link to={`/PostPage`}>
         <img
           src={'https://png.pngtree.com/png-vector/20220810/ourmid/pngtree-blogging-concept-picture-writer-laptop-png-image_5722986.png'}
           alt='post cover'
@@ -61,7 +61,7 @@ export default function PostCard() {
       <div className='flex justify-between'><p className='text-lg font-semibold line-clamp-2'>{mockPost.postname} </p><ThreeDotMenu/></div>
         <span className='italic text-sm'>{mockPost.category}</span>
         <Link
-          to={`/PortPage`}
+          to={`/PostPage`}
           className='z-10 group-hover:bottom-0 absolute bottom-[-200px] left-0 right-0 border border-teal-500 text-teal-500 hover:bg-teal-500 hover:text-white transition-all duration-300 text-center py-2 rounded-md !rounded-tl-none m-2'
         >
           Read article
@@ -69,7 +69,7 @@ export default function PostCard() {
       </div>
     </div>
     <div className='group relative w-full border border-teal-500 hover:border-2 h-[400px] overflow-hidden rounded-lg sm:w-[430px] transition-all'>
-      <Link to={`/PortPage`}>
+      <Link to={`/PostPage`}>
         <img
           src={'https://png.pngtree.com/png-vector/20220810/ourmid/pngtree-blogging-concept-picture-writer-laptop-png-image_5722986.png'}
           alt='post cover'
@@ -80,7 +80,7 @@ export default function PostCard() {
       <div className='flex justify-between'><p className='text-lg font-semibold line-clamp-2'>{mockPost.postname}</p><ThreeDotMenu/></div>
         <span className='italic text-sm'>{mockPost.category}</span>
         <Link
-          to={`/PortPage`}
+          to={`/PostPage`}
           className='z-10 group-hover:bottom-0 absolute bottom-[-200px] left-0 right-0 border border-teal-500 text-teal-500 hover:bg-teal-500 hover:text-white transition-all duration-300 text-center py-2 rounded-md !rounded-tl-none m-2'
         >
           Read article

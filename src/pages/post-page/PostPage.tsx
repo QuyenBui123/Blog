@@ -2,7 +2,7 @@ import { Button, Textarea } from "flowbite-react";
 import { Link } from "react-router-dom";
 import { FaThumbsUp } from 'react-icons/fa';
 
-export default function PortPage() {
+export default function PostPage() {
 
   return (
     <main className='p-3 flex flex-col max-w-6xl mx-auto min-h-screen'>
