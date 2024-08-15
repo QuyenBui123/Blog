@@ -60,6 +60,10 @@
 import { Avatar, Button, Dropdown, Navbar, TextInput } from 'flowbite-react';
 import { Link,  } from 'react-router-dom';
 import { AiOutlineSearch } from 'react-icons/ai';
+import { FaSun,FaMoon } from 'react-icons/fa';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleTheme } from '../../redux/theme/ThemeSlice';
+import { RootState } from '../../redux/store';
 export interface UserState {
   currentUser: {
     username: string;
@@ -72,10 +76,7 @@ export interface ThemeState {
   theme: 'light' | 'dark';
 }
 
-export interface RootState {
-  user: UserState;
-  theme: ThemeState;
-}
+
 
 const mockUser = {
   username: 'Userr',
@@ -84,7 +85,8 @@ const mockUser = {
 };
 export default function Header() {
   const currentUser = mockUser;
-
+  const dispatch = useDispatch();
+  const { theme } = useSelector((state: RootState) => state.theme);
 
   return (
     <Navbar fluid rounded className='border-b-2'>
@@ -109,6 +111,15 @@ export default function Header() {
         <AiOutlineSearch />
       </Button>
       <div className='flex gap-2 md:order-2'>
+      <Button
+          className='w-12 h-10 hidden sm:inline'
+          color='gray'
+          pill
+          onClick={() => dispatch(toggleTheme())}
+          >
+          {theme === 'light' ? <FaSun /> : <FaMoon />}
+          
+        </Button>
         {currentUser ? (
           <Dropdown
             arrowIcon={false}
