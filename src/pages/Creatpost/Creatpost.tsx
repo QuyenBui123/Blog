@@ -2,6 +2,8 @@ import { Alert, Button, FileInput, Select, TextInput } from 'flowbite-react';
 import { useState } from 'react';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import 'react-quill/dist/quill.snow.css'
+import ReactQuill from 'react-quill';
 
 export default function About() {
   const [imageUploadProgress, ] = useState(null);
@@ -66,14 +68,22 @@ export default function About() {
           </Button>
         </div>
         {imageUploadError && <Alert color='failure'>{imageUploadError}</Alert>}
-        {formData && (
+        {/* {formData && (
           <img
             src="https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/07/anh-bia-dep-10.jpg"
             alt='upload'
             className='w-full h-72 object-cover'
           />
-        )}
-        
+        )} */}
+        <ReactQuill
+          theme='snow'
+          placeholder='Write something...'
+          className='h-72 mb-12'
+          
+          onChange={(value) => {
+            setFormData({ ...formData, content: value });
+          }}
+        />
         <Button type='submit' gradientDuoTone='purpleToPink'>
           Publish
         </Button>
