@@ -1,10 +1,14 @@
 import { Modal, Table, Button } from 'flowbite-react';
+import { useState } from 'react';
 
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
 
 export default function DashComments() {
  
-  
+  const [showModal, setShowModal] = useState(false);
+  const handleDeleteUser = async () => {
+    setShowModal(false);   
+  };
 
   return (
     <div className='table-auto overflow-x-scroll md:mx-auto p-3 scrollbar scrollbar-track-slate-100 scrollbar-thumb-slate-300 dark:scrollbar-track-slate-700 dark:scrollbar-thumb-slate-500'>
@@ -31,6 +35,7 @@ export default function DashComments() {
                   <Table.Cell>{124}</Table.Cell>
                   <Table.Cell>
                     <span
+                     onClick={() => setShowModal(true)}
                       className='font-medium text-red-500 hover:underline cursor-pointer'
                     >
                       Delete
@@ -47,6 +52,7 @@ export default function DashComments() {
                   <Table.Cell>{124}</Table.Cell>
                   <Table.Cell>
                     <span
+                     onClick={() => setShowModal(true)}
                       className='font-medium text-red-500 hover:underline cursor-pointer'
                     >
                       Delete
@@ -62,6 +68,8 @@ export default function DashComments() {
             </button>
         {/* <p>You have no comments yet!</p> */}
       <Modal
+      show={showModal}
+      onClose={() => setShowModal(false)}
         popup
         size='md'
       >
@@ -73,10 +81,10 @@ export default function DashComments() {
               Are you sure you want to delete this comment?
             </h3>
             <div className='flex justify-center gap-4'>
-              <Button color='failure' >
+              <Button color='failure' onClick={handleDeleteUser} >
                 Yes, I'm sure
               </Button>
-              <Button color='gray'>
+              <Button color='gray' onClick={() => setShowModal(false)}>
                 No, cancel
               </Button>
             </div>

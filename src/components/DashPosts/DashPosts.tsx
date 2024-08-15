@@ -74,7 +74,7 @@ export default function DashPosts() {
                   <Table.Cell>{mockPost.category}</Table.Cell>
                   <Table.Cell>
                     <span
-                      // onClick
+                       onClick={() => setShowModal(true)}
                       className='font-medium text-red-500 hover:underline cursor-pointer'
                     >
                       Delete

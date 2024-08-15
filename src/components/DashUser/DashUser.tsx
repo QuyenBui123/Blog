@@ -48,6 +48,7 @@ export default function DashUsers() {
                   </Table.Cell>
                   <Table.Cell>
                     <span
+                     onClick={() => setShowModal(true)}
                       className='font-medium text-red-500 hover:underline cursor-pointer'
                     >
                       Delete
@@ -76,6 +77,7 @@ export default function DashUsers() {
                   </Table.Cell>
                   <Table.Cell>
                     <span
+                     onClick={() => setShowModal(true)}
                       className='font-medium text-red-500 hover:underline cursor-pointer'
                     >
                       Delete
