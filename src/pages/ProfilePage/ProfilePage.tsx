@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import {FaUserCheck, FaUserPlus } from 'react-icons/fa';
-import {  Avatar, Button, Carousel, HR, Sidebar } from 'flowbite-react';
+import {  Avatar, Button, HR, Sidebar } from 'flowbite-react';
 import About from '../About';
 import { Link } from 'react-router-dom';
 import PostCard from '../../components/PostCard';
@@ -12,19 +12,19 @@ const ProfilePage = () => {
     setIsFollowing(!isFollowing);
   };
   return (
-    <div className="min-h-screen bg-gray-100">
-      {/* <div className="relative bg-gray-800 h-48">
+    <div className="min-h-screen ">
+      <div className="relative bg-gray-800 h-48">
         <img
           src="https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/07/anh-bia-dep-10.jpg"
           alt="Cover"
           className="object-cover w-full h-48"
         />
-      </div> */}
-      <div className="h-56 sm:h-64 xl:h-80 2xl:h-96">
+      </div>
+      {/* <div className="h-56 sm:h-64 xl:h-80 2xl:h-96">
       <Carousel indicators={false} leftControl=" " rightControl=" "> 
         <img src="https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/07/anh-bia-dep-10.jpg" />
       </Carousel>
-      </div>
+      </div> */}
       <div className="flex flex-col p-4 mt-[-5rem] transform">
         {/* Profile Picture */}
         <div className='flex mt-5'> 
