@@ -14,16 +14,25 @@ export default function UpdatePost() {
    
   };
   const handleSubmit = async () => {
-    
+   
   };
+const mockPost = {
+        postname: 'Test',
+        category: 'Technology',
+        postcontent:" On this blog, you'll find weekly articles and tutorials on topics such as web development software engineering, and programming languages Sahand is always learning and exploring new technologies so be sure to check back often for new content!",
+        image:"https://png.pngtree.com/png-vector/20220810/ourmid/pngtree-blogging-concept-picture-writer-laptop-png-image_5722986.png",
+        title:"Test",
+        slug:"uppos"
+      };
   return (
     <div className='p-3 max-w-3xl mx-auto min-h-screen'>
-      <h1 className='text-center text-3xl my-7 font-semibold'>Create a post</h1>
+      <h1 className='text-center text-3xl my-7 font-semibold'>Update post</h1>
       <form className='flex flex-col gap-4' onSubmit={handleSubmit}>
         <div className='flex flex-col gap-4 sm:flex-row justify-between'>
           <TextInput
             type='text'
             placeholder='Title'
+            value={mockPost.title}
             required
             id='title'
             className='flex-1'
@@ -76,13 +85,12 @@ export default function UpdatePost() {
           theme='snow'
           placeholder='Write something...'
           className='h-72 mb-12'
-          
           onChange={(value) => {
-            setFormData({ ...formData, content: value });
+            setFormData({ ...formData, content: value });   
           }}
         />
         <Button type='submit' gradientDuoTone='purpleToPink'>
-          Publish
+          Update
         </Button>
         {publishError && (
           <Alert className='mt-5' color='failure'>
