@@ -1,4 +1,5 @@
 
+import { ListGroup } from 'flowbite-react';
 import { useState } from 'react';
 import { FaEllipsisV } from 'react-icons/fa';
 import { FiShare, FiLink, FiFlag } from 'react-icons/fi';
@@ -24,27 +25,13 @@ const ThreeDotMenu = () => {
         <FaEllipsisV />
       </button>
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg">
-          <div className="py-1">
-            <button
-              onClick={handleShare}
-              className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 w-full text-left"
-            >
-              <FiShare className="mr-2" /> Share
-            </button>
-            <button
-              onClick={handleCopyLink}
-              className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 w-full text-left"
-            >
-              <FiLink className="mr-2" /> Copy Link
-            </button>
-            <button
-              onClick={handleReport}
-              className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 w-full text-left"
-            >
-              <FiFlag className="mr-2" /> Report
-            </button>
-          </div>
+        
+      <div className="absolute right-0 mt-2 w-48   rounded-md shadow-lg">
+        <ListGroup className="w-48">
+        <ListGroup.Item onClick={handleShare}><FiShare className="mr-2" /> Share</ListGroup.Item>
+        <ListGroup.Item onClick={handleCopyLink}><FiLink className="mr-2" /> Copy Link</ListGroup.Item>
+        <ListGroup.Item onClick={handleReport}><FiFlag className="mr-2" /> Report</ListGroup.Item>
+      </ListGroup>  
         </div>
       )}
     </div>
