@@ -11,7 +11,7 @@ export default function DashPosts() {
     postcontent:" On this blog, you'll find weekly articles and tutorials on topics such as web development software engineering, and programming languages Sahand is always learning and exploring new technologies so be sure to check back often for new content!",
     image:"https://png.pngtree.com/png-vector/20220810/ourmid/pngtree-blogging-concept-picture-writer-laptop-png-image_5722986.png",
     title:"Test",
-    slug:"123"
+    slug:"uppos"
   };
   // const { currentUser } = useSelector((state) => state.user);
   // const [userPosts ] = useState([]);
@@ -83,7 +83,7 @@ export default function DashPosts() {
                   <Table.Cell>
                     <Link
                       className='text-teal-500 hover:underline'
-                      to={`/update-post/${mockPost.slug}`}
+                      to={`/${mockPost.slug}`}
                     >
                       <span>Edit</span>
                     </Link>
