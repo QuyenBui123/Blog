@@ -3,12 +3,14 @@ import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
-import About from "./pages/About";
+import About from "./pages/Creatpost";
 import Search from "./pages/Search";
 import ThreeDotMenu from "./components/ThreeDotMenu";
 import ProfilePage from "./pages/ProfilePage";
 import PostCard from "./components/PostCard";
 import PostPage from "./pages/post-page";
+
+
 export default function useRouterElement(){
     const routerElement=useRoutes([
         {path:'/',
@@ -46,9 +48,13 @@ export default function useRouterElement(){
             path:'/ProfilePage',
             element:<ProfilePage/>
         },{
-            path:"/PostCard",
+            path:'/PostCard',
             element:<PostCard/>
+        },{
+            path:'/pos',
+            element:<About/>
         }
+
     ])
     return routerElement
 }
