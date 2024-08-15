@@ -10,9 +10,6 @@ export default function About() {
   const [imageUploadError, ] = useState(null);
   const [formData, setFormData] = useState({});
   const [publishError, ] = useState(null);
-
-
-
   const handleUpdloadImage = async () => {
    
   };
