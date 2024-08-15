@@ -58,7 +58,7 @@
 //   )
 // }
 import { Avatar, Button, Dropdown, Navbar, TextInput } from 'flowbite-react';
-import { Link, useLocation,  } from 'react-router-dom';
+import { Link,  } from 'react-router-dom';
 import { AiOutlineSearch } from 'react-icons/ai';
 export interface UserState {
   currentUser: {
@@ -84,10 +84,10 @@ const mockUser = {
 };
 export default function Header() {
   const currentUser = mockUser;
-  const path = useLocation().pathname;
+
 
   return (
-    <Navbar className='border-b-2'>
+    <Navbar fluid rounded className='border-b-2'>
       <Link
         to='/'
         className='self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white'
@@ -139,15 +139,15 @@ export default function Header() {
         )}
         <Navbar.Toggle />
       </div>
-      <Navbar.Collapse>
-        <Navbar.Link active={path === '/'} >
-          <Link to='/'>Home</Link>
+      <Navbar.Collapse  > {/*  className='md:block ' */}
+        <Navbar.Link href="/" >
+          Home
         </Navbar.Link>
-        <Navbar.Link active={path === '/about'} >
-          <Link to='/pos'>Creat Post</Link>
+        <Navbar.Link  href="/pos">
+          Creat Post
         </Navbar.Link>
-        <Navbar.Link active={path === '/projects'} >
-          <Link to='/projects'>Projects</Link>
+        <Navbar.Link href="/" >
+          Projects
         </Navbar.Link>
       </Navbar.Collapse>
     </Navbar>
