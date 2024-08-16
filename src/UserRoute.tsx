@@ -10,6 +10,7 @@ import ProfilePage from "./pages/ProfilePage";
 import PostCard from "./components/PostCard";
 import PostPage from "./pages/post-page";
 import UpdatePost from "./pages/UpdatePost";
+import ComentSesion from "./components/commetn";
 
 
 export default function useRouterElement(){
@@ -57,6 +58,9 @@ export default function useRouterElement(){
         },{
             path:'uppos',
             element:<UpdatePost/>
+        },{
+            path:'commen',
+            element:<ComentSesion/>
         }
 
     ])

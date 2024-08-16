@@ -12,13 +12,9 @@ export interface UserState {
     profilePicture: string;
   } | null;
 }
-
 export interface ThemeState {
   theme: 'light' | 'dark';
 }
-
-
-
 const mockUser = {
   username: 'Userr',
   email: 'testuser@example.com',
