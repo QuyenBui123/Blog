@@ -1,9 +1,15 @@
-import { Button, Textarea } from "flowbite-react";
+import { Button } from "flowbite-react";
+import { FaThumbsUp  } from 'react-icons/fa';
 import { Link } from "react-router-dom";
-import { FaThumbsUp } from 'react-icons/fa';
+import ComentSesion from "../../components/commetn";
+import { useState } from "react";
 
 export default function PostPage() {
+  const [liked, setLiked] = useState(false);
 
+  const handleLikeClick = () => {
+    setLiked(!liked);
+  };
   return (
     <main className='p-3 flex flex-col max-w-6xl mx-auto min-h-screen'>
       <h1 className='text-3xl mt-10 p-3 text-center font-serif max-w-2xl mx-auto lg:text-4xl'>
@@ -48,74 +54,19 @@ export default function PostPage() {
           <div className="mt-4">One of the most rewarding aspects of traveling is immersing yourself in the local culture and customs. This includes trying local cuisine, attending cultural events and festivals, and interacting with locals. Learning a few phrases in the local language can also go a long way in making connections and showing respect.</div>
           </div>
 
-          
-      <div className='max-w-4xl mx-auto w-full'>
-        {/* <CallToAction /> */}
-      </div>
-      {/* <CommentSection  /> */}
-{/* comment */}
-<form className='border border-teal-500 rounded-md p-3'>
-          <Textarea
-            placeholder='Add a comment...'
-            rows={3}
-            maxLength={2000}
-          />
-          <div className='flex justify-between items-center mt-5'>
-            <p className='text-gray-500 text-xs'>
-             characters remaining
-            </p>
-            <Button  pill gradientDuoTone='purpleToBlue' type='submit'>
-              Submit
-            </Button>
-          </div>
-        </form>
-{/* enf comment */}
-{/*  */}
-<div className='flex p-4 border-b dark:border-gray-600 text-sm'>
-      <div className='flex-shrink-0 mr-3'>
-        <img
-          className='w-10 h-10 rounded-full bg-gray-200'
-          src='https://cdn-icons-png.flaticon.com/512/149/149071.png'
-          alt='useimage'
-        />
-      </div>
-      <div className='flex-1'>
-        <div className='flex items-center mb-1'>
-          <span className='font-bold mr-1 text-xs truncate'>
-            NameTest
-          </span>
-          <span className='text-gray-500 text-xs'>
-            {new Date().toLocaleDateString()}
-          </span>
-        </div>
-            <p className='text-gray-500 pb-2'>Test comment</p>
-            <div className='flex items-center pt-2 text-xs border-t dark:border-gray-700 max-w-fit gap-2'>
+    <div className='flex p-4 border-b dark:border-gray-600 text-sm'>
               <button
                 type='button'
-                className={`text-gray-400 hover:text-blue-500 `}
+                onClick={handleLikeClick}
+                className={` hover:text-blue-500 ${liked ? 'text-blue-500' : ''}`}
               >
                 <FaThumbsUp className='text-sm' />
               </button>
-              <p className='text-gray-400'>
+              <p className='ml-2 mr-4 mt-2'>
                 1 like
               </p>
-                    <button
-                      type='button'
-                      className='text-gray-400 hover:text-blue-500'
-                    >
-                      Edit
-                    </button>
-                    <button
-                      type='button'
-                      
-                      className='text-gray-400 hover:text-red-500'
-                    >
-                      Delete
-                    </button>
-            </div>
-      </div>
+      <ComentSesion/>
     </div>
-{/*  */}
       <div className='flex flex-col justify-center items-center mb-5'>
         <h1 className='text-2xl mt-5'>Recent articles</h1>
         <div className='flex flex-wrap gap-5 mt-5 justify-center'>
