@@ -9,7 +9,7 @@ const mockPost = {
 
 export default function PostCard() {
   return (
-    <div className='flex flex-wrap gap-6 '>
+    <div className='flex flex-wrap gap-6 justify-center '>
         <div className='group relative w-full border border-teal-500 hover:border-2 h-[400px] overflow-hidden rounded-lg sm:w-[430px] transition-all'>
       <Link to={`/PostPage`}>
         <img

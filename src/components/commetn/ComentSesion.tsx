@@ -16,7 +16,6 @@ export default function ComentSesion() {
     const handleDelete = async () => {
       setShowModal(false);
     }
-
   return (
     <>
       <div className="flex   justify-center">
