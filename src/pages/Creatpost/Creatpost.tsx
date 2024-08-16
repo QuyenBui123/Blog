@@ -13,11 +13,17 @@ import {
 } from 'firebase/storage';
 import { app } from '../../firebase';
 
+interface FormData {
+  title?: string;
+  category?: string;
+  image?: string;
+  content?: string;
+}
 export default function About() {
   const [file,setFile] = useState<File | null>(null);
-  const [imageUploadProgress,setImageUploadProgress ] = useState<string|number | null>(null);
+  const [imageUploadProgress,setImageUploadProgress ] = useState<number | null>(null);
   const [imageUploadError,setImageUploadError ] = useState<string | null>(null);
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState<FormData>({});
   const [publishError, ] = useState(null);  
   
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,7 +48,7 @@ export default function About() {
         (snapshot) => {
           const progress =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          setImageUploadProgress(progress.toFixed(0));
+            setImageUploadProgress(progress);
         },
         (error) => {
           console.error('Upload error:', error); 
@@ -94,24 +100,21 @@ export default function About() {
         </div>
         <div className='flex gap-4 items-center justify-between border-4 border-teal-500 border-dotted p-3'>
           <FileInput
-           type='file'
            accept='image/*'
-           onChange={(e) => setFile(e.target.files[0])}    
+           onChange={handleFileChange}   
           />
-          {/* onChange={handleFileChange} */}
           <Button
             type='button'
             gradientDuoTone='purpleToBlue'
             size='sm'
             outline
-            onClick={handleUpdloadImage}
-            
+            onClick={handleUpdloadImage} 
           >
             {imageUploadProgress ? (
               <div className='w-16 h-16'>
                 <CircularProgressbar
-                  value={imageUploadProgress}
-                  text={`${imageUploadProgress || 0}%`}
+                 value={imageUploadProgress} // value must be a number
+                 text={`${Math.round(imageUploadProgress)}%`} 
                 />
               </div>
             ) : (
