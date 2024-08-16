@@ -13,7 +13,6 @@ export default function ComentSesion() {
 
   const handleLikeClick = () => {
     setLiked(!liked);}
-  
     const handleDelete = async () => {
       setShowModal(false);
     }
@@ -49,7 +48,7 @@ export default function ComentSesion() {
             <button
                 type='button'
                 onClick={handleLikeClick}
-                className={`text-gray-400 hover:text-blue-500 ${liked ? 'text-blue-500' : ''}`}
+                className={` hover:text-blue-500 ${liked ? 'text-blue-500' : ''}`}
               >
                 <FaThumbsUp className='text-sm' />
               </button>
