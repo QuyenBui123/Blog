@@ -16,7 +16,7 @@ export interface ThemeState {
   theme: 'light' | 'dark';
 }
 const mockUser = {
-  username: 'Userr',
+  username: 'Test',
   email: 'testuser@example.com',
   profilePicture: 'https://example.com/profile.jpg',
 };
@@ -66,13 +66,14 @@ export default function Header() {
             }
           >
             <Dropdown.Header>
-              <Link to='/ProfilePage'><span className='block text-sm'>{mockUser.username}</span></Link>
+              <Link to='/ProfilePage' className=' hover:text-blue-500'><span className='block text-sm' >{mockUser.username}</span>
               
               <span className='block text-sm font-medium truncate'>
                 {mockUser.email}
               </span>
+              </Link>
             </Dropdown.Header>
-            <Link to={'/dashboard?tab=profile'}>
+            <Link to={'/dashboard?tab=profile'}>  
               <Dropdown.Item>Profile</Dropdown.Item>
             </Link>
             <Dropdown.Divider />
