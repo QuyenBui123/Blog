@@ -11,17 +11,23 @@ export default function PostPage() {
   const handleLikeClick = () => {
     setLiked(!liked);
   };
+  const mockPost = {
+    postname: 'Test',
+    category: 'Technology',
+    poscontent:"Environment variables play a crucial role in configuring and securing applications. In the context of Next.js, a popular React framework for building web applications, understanding how to work with environment variables is essential for managing sensitive information, such as API keys, database URLs, and other configuration settings. In this guide, we'll explore the ins and outs of using environment variables in Next.js.",
+    postcontenttitle:"Defining Environment Variables",
+  };
   return (
     <main className='p-3 flex flex-col max-w-6xl mx-auto min-h-screen'>
       <h1 className='text-3xl mt-10 p-3 text-center font-serif max-w-2xl mx-auto lg:text-4xl'>
-      Test port
+      {mockPost.postname}
       </h1>
       <Link
         to={`/`}
         className='self-center mt-5'
       >
         <Button color='gray' pill size='xs'>
-        Technology
+        {mockPost.category}
         </Button>
       </Link>
       <img
@@ -36,25 +42,9 @@ export default function PostPage() {
         </span>
       </div>
       <div className='p-3 max-w-2xl mx-auto w-full post-content'>
-          <div>Traveling is an enriching experience that opens up new horizons, exposes us to different cultures, and creates memories that last a lifetime. However, traveling can also be stressful and overwhelming, especially if you don't plan and prepare adequately. In this blog article, we'll explore tips and tricks for a memorable journey and how to make the most of your travels.</div>
-          <div className="mt-4">One of the most rewarding aspects of traveling is immersing yourself in the local culture and customs. This includes trying local cuisine, attending cultural events and festivals, and interacting with locals. Learning a few phrases in the local language can also go a long way in making connections and showing respect.</div>
-          <div className="mt-5 text-2xl">
-            Research Your Destination
-          </div>
-          <div className="mt-4">One of the most rewarding aspects of traveling is immersing yourself in the local culture and customs. This includes trying local cuisine, attending cultural events and festivals, and interacting with locals. Learning a few phrases in the local language can also go a long way in making connections and showing respect.</div>
-          <div className="mt-4">One of the most rewarding aspects of traveling is immersing yourself in the local culture and customs. This includes trying local cuisine, attending cultural events and festivals, and interacting with locals. Learning a few phrases in the local language can also go a long way in making connections and showing respect.</div>
-          <div className="mt-5 text-2xl">
-            Research Your Destination
-          </div>
-          <div className="mt-4">One of the most rewarding aspects of traveling is immersing yourself in the local culture and customs. This includes trying local cuisine, attending cultural events and festivals, and interacting with locals. Learning a few phrases in the local language can also go a long way in making connections and showing respect.</div>
-          <div className="mt-4">One of the most rewarding aspects of traveling is immersing yourself in the local culture and customs. This includes trying local cuisine, attending cultural events and festivals, and interacting with locals. Learning a few phrases in the local language can also go a long way in making connections and showing respect.</div>
-          <div className="mt-5 text-2xl">
-            Research Your Destination
-          </div>
-          <div className="mt-4">One of the most rewarding aspects of traveling is immersing yourself in the local culture and customs. This includes trying local cuisine, attending cultural events and festivals, and interacting with locals. Learning a few phrases in the local language can also go a long way in making connections and showing respect.</div>
-          <div className="mt-4">One of the most rewarding aspects of traveling is immersing yourself in the local culture and customs. This includes trying local cuisine, attending cultural events and festivals, and interacting with locals. Learning a few phrases in the local language can also go a long way in making connections and showing respect.</div>
-          </div>
-
+        {mockPost.poscontent}
+        {mockPost.poscontent}
+      </div>
     <div className='flex p-4 border-b dark:border-gray-600 text-sm'>
               <button
                 type='button'
