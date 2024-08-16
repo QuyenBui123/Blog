@@ -5,13 +5,63 @@ import 'react-circular-progressbar/dist/styles.css';
 import 'react-quill/dist/quill.snow.css'
 import ReactQuill from 'react-quill';
 
+import {
+  getDownloadURL,
+  getStorage,
+  ref,
+  uploadBytesResumable,
+} from 'firebase/storage';
+import { app } from '../../firebase';
+
 export default function About() {
-  const [imageUploadProgress, ] = useState(null);
-  const [imageUploadError, ] = useState(null);
+  const [file,setFile] = useState<File | null>(null);
+  const [imageUploadProgress,setImageUploadProgress ] = useState<string|number | null>(null);
+  const [imageUploadError,setImageUploadError ] = useState<string | null>(null);
   const [formData, setFormData] = useState({});
-  const [publishError, ] = useState(null);
+  const [publishError, ] = useState(null);  
+  
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  
+  const selectedFile = event.target.files?.[0] || null;
+    setFile(selectedFile);
+  };
   const handleUpdloadImage = async () => {
-   
+    
+    try {
+      if (!file) {
+        setImageUploadError('Please select an image');
+        return;
+      }
+      setImageUploadError(null);
+      const storage = getStorage(app);
+      const fileName = new Date().getTime() + '-' + file.name;
+      const storageRef = ref(storage, fileName);
+      const uploadTask = uploadBytesResumable(storageRef, file);
+      uploadTask.on(
+        'state_changed',
+        (snapshot) => {
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          setImageUploadProgress(progress.toFixed(0));
+        },
+        (error) => {
+          console.error('Upload error:', error); 
+          setImageUploadError('Image upload failed');
+          setImageUploadProgress(null);
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            setImageUploadProgress(null);
+            setImageUploadError(null);
+            setFormData({ ...formData, image: downloadURL });
+          });
+        }
+      );
+    } catch (error) {
+      setImageUploadError('Image upload failed');
+      setImageUploadProgress(null);
+      console.log(error);
+    }
   };
   const handleSubmit = async () => {
     
@@ -43,7 +93,12 @@ export default function About() {
           </Select>
         </div>
         <div className='flex gap-4 items-center justify-between border-4 border-teal-500 border-dotted p-3'>
-          <FileInput/>
+          <FileInput
+           type='file'
+           accept='image/*'
+           onChange={(e) => setFile(e.target.files[0])}    
+          />
+          {/* onChange={handleFileChange} */}
           <Button
             type='button'
             gradientDuoTone='purpleToBlue'
@@ -65,13 +120,13 @@ export default function About() {
           </Button>
         </div>
         {imageUploadError && <Alert color='failure'>{imageUploadError}</Alert>}
-        {/* {formData && (
+        {formData.image && (
           <img
-            src="https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/07/anh-bia-dep-10.jpg"
+            src={formData.image}
             alt='upload'
             className='w-full h-72 object-cover'
           />
-        )} */}
+        )}
         <ReactQuill
           theme='snow'
           placeholder='Write something...'
