@@ -3,7 +3,9 @@ import { useEffect, useState } from 'react';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { clearUser } from '../../redux/user/UserSlice';
 
 export default function DashProfile() {
   const [imageFile, setImageFile] = useState<File | null>(null);
@@ -14,6 +16,9 @@ export default function DashProfile() {
   const [updateUserSuccess, setUpdateUserSuccess] = useState<string | null>(null);
   const [updateUserError, setUpdateUserError] = useState<string | null>(null);
   const [showModal, setShowModal] = useState<boolean>(false);
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -72,6 +77,9 @@ export default function DashProfile() {
   };
 
   const handleSignout = async () => {
+    dispatch(clearUser());
+    localStorage.removeItem('user');
+    navigate('/'); 
   };
 
   return (

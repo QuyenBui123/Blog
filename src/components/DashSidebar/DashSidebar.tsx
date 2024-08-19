@@ -8,12 +8,18 @@ import {
   HiChartPie,
 } from 'react-icons/hi';
 import { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { clearUser } from '../../redux/user/UserSlice';
 
 
 export default function DashSidebar() {
   const location = useLocation();
   const [tab, setTab] = useState('');
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
     const tabFromUrl = urlParams.get('tab');
@@ -21,6 +27,13 @@ export default function DashSidebar() {
       setTab(tabFromUrl);
     }
   }, [location.search]);
+
+  const handleSignOut = () => {
+ 
+    dispatch(clearUser());
+    localStorage.removeItem('user');
+    navigate('/'); 
+  };
 
   return (
     <Sidebar className='w-full md:w-56'>
@@ -78,6 +91,7 @@ export default function DashSidebar() {
           <Sidebar.Item
             icon={HiArrowSmRight}
             className='cursor-pointer'
+            onClick={handleSignOut}
           >
             Sign Out
           </Sidebar.Item>

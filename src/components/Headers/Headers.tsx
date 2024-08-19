@@ -1,10 +1,11 @@
 import { Avatar, Button, Dropdown, Navbar, TextInput } from 'flowbite-react';
-import { Link,  } from 'react-router-dom';
+import { Link, useNavigate,  } from 'react-router-dom';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { FaSun,FaMoon } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleTheme } from '../../redux/theme/ThemeSlice';
 import { RootState } from '../../redux/store';
+
 export interface UserState {
   currentUser: {
     username: string;
@@ -15,15 +16,19 @@ export interface UserState {
 export interface ThemeState {
   theme: 'light' | 'dark';
 }
-const mockUser = {
-  username: 'Test',
-  email: 'testuser@example.com',
-  profilePicture: 'https://example.com/profile.jpg',
-};
 export default function Header() {
-  const currentUser = mockUser;
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { theme } = useSelector((state: RootState) => state.theme);
+  const currentUser = useSelector((state: RootState) => state.user.currentUser);
+
+  const handleNavigateHome = () => {
+    navigate('/');
+  };
+
+  const handleNavigateCreatPost = () => {
+    navigate('/Pos');
+  };
 
   return (
     <Navbar fluid rounded className='border-b-2'>
@@ -62,14 +67,14 @@ export default function Header() {
             arrowIcon={false}
             inline
             label={
-              <Avatar alt='user' img='https://cdn-icons-png.flaticon.com/512/149/149071.png' rounded />
+              <Avatar alt='user' img={currentUser.profilePicture} rounded />
             }
           >
             <Dropdown.Header>
-              <Link to='/ProfilePage' className=' hover:text-blue-500'><span className='block text-sm' >{mockUser.username}</span>
+              <Link to='/ProfilePage' className=' hover:text-blue-500'><span className='block text-sm' >{currentUser.username}</span>
               
               <span className='block text-sm font-medium truncate'>
-                {mockUser.email}
+                {currentUser.email}
               </span>
               </Link>
             </Dropdown.Header>
@@ -77,10 +82,10 @@ export default function Header() {
               <Dropdown.Item>Profile</Dropdown.Item>
             </Link>
             <Dropdown.Divider />
-            <Dropdown.Item >Sign out</Dropdown.Item>
+            <Dropdown.Item href='/'>Sign out</Dropdown.Item>
           </Dropdown>
         ) : (
-          <Link to='/sign-in'>
+          <Link to='/SignIn'>
             <Button gradientDuoTone='purpleToBlue' outline>
               Sign In
             </Button>
@@ -89,14 +94,11 @@ export default function Header() {
         <Navbar.Toggle />
       </div>
       <Navbar.Collapse  > {/*  className='md:block ' */}
-        <Navbar.Link href="/" >
+        <Navbar.Link onClick={handleNavigateHome} className='cursor-pointer ' >
           Home
         </Navbar.Link>
-        <Navbar.Link  href="/pos">
+        <Navbar.Link  onClick={handleNavigateCreatPost} className='cursor-pointer '>
           Creat Post
-        </Navbar.Link>
-        <Navbar.Link href="/" >
-          Projects
         </Navbar.Link>
       </Navbar.Collapse>
     </Navbar>
