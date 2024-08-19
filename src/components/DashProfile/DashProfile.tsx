@@ -1,49 +1,79 @@
 import { Alert, Button, Modal, TextInput } from 'flowbite-react';
 import { useEffect, useState } from 'react';
-// import { useSelector } from 'react-redux';
-
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
 
-
 export default function DashProfile() {
-  // const { currentUser, error, loading } = useSelector((state) => state.user);
-  const [imageFile] = useState(null);
-  const [imageFileUploadProgress] = useState(null);
-  const [imageFileUploadError] = useState(null);
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [imageFilePreview, setImageFilePreview] = useState<string | ArrayBuffer | null>(null);
+  const [imageFileUploadProgress, ] = useState<number | null>(null);
+  const [imageFileUploadError, ] = useState<string | null>(null);
   
-  const [updateUserSuccess, setUpdateUserSuccess] = useState(null);
-  const [updateUserError, setUpdateUserError] = useState(null);
-  const [showModal, setShowModal] = useState(false);
-  const handleImageChange = () => {
-    
+  const [updateUserSuccess, setUpdateUserSuccess] = useState<string | null>(null);
+  const [updateUserError, setUpdateUserError] = useState<string | null>(null);
+  const [showModal, setShowModal] = useState<boolean>(false);
+
+  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      setImageFile(file);
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImageFilePreview(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
   };
+
   useEffect(() => {
-    if (imageFile) {
+    if (imageFile && imageFile instanceof File) {
       uploadImage();
     }
   }, [imageFile]);
 
-  const uploadImage = async () => {  
+  const uploadImage = async () => {
+    if (imageFile && imageFile instanceof File) {
+      const formData = new FormData();
+      formData.append('profile-picture', imageFile);
+      try {
+        const response = await fetch('/upload', {
+          method: 'POST',
+          body: formData,
+        });
+
+        if (response.ok) {
+          setUpdateUserSuccess('Profile picture updated successfully');
+        } else {
+          throw new Error('Upload failed');
+        }
+      } catch (error) {
+        if(error instanceof Error){
+        setUpdateUserError(error.message);}else{
+          setUpdateUserError('An unknonw error occurred');
+        }
+      }
+    }
   };
 
   const handleChange = () => {
-  
+
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     setUpdateUserError(null);
     setUpdateUserSuccess(null);
   };
+
   const handleDeleteUser = async () => {
-    setShowModal(false);   
+    setShowModal(false);
   };
 
-  const handleSignout = async () => { 
+  const handleSignout = async () => {
   };
+
   return (
     <div className='max-w-lg mx-auto p-3 w-full'>
       <h1 className='my-7 text-center font-semibold text-3xl'>Profile</h1>
@@ -52,14 +82,16 @@ export default function DashProfile() {
           type='file'
           accept='image/*'
           onChange={handleImageChange}
-          // ref={filePickerRef}
           hidden
         />
         <div
           className='relative w-32 h-32 self-center cursor-pointer shadow-md overflow-hidden rounded-full'
-          // onClick={() => filePickerRef.current.click()}
+          onClick={() => {
+            const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
+            fileInput?.click();
+          }}
         >
-          {imageFileUploadProgress && (
+          {imageFileUploadProgress !== null && (
             <CircularProgressbar
               value={imageFileUploadProgress || 0}
               text={`${imageFileUploadProgress}%`}
@@ -73,20 +105,16 @@ export default function DashProfile() {
                   left: 0,
                 },
                 path: {
-                  stroke: `rgba(62, 152, 199, ${
-                    imageFileUploadProgress / 100
-                  })`,
+                  stroke: `rgba(62, 152, 199, ${imageFileUploadProgress / 100})`,
                 },
               }}
             />
           )}
           <img
-            src="https://png.pngtree.com/png-vector/20220810/ourmid/pngtree-blogging-concept-picture-writer-laptop-png-image_5722986.png"
+            src={imageFilePreview as string || "https://png.pngtree.com/png-vector/20220810/ourmid/pngtree-blogging-concept-picture-writer-laptop-png-image_5722986.png"}
             alt='user'
             className={`rounded-full w-full h-full object-cover border-8 border-[lightgray] ${
-              imageFileUploadProgress &&
-              imageFileUploadProgress < 100 &&
-              'opacity-60'
+              imageFileUploadProgress !== null && imageFileUploadProgress < 100 && 'opacity-60'
             }`}
           />
         </div>
@@ -115,22 +143,18 @@ export default function DashProfile() {
           type='submit'
           gradientDuoTone='purpleToBlue'
           className='w-full'
-          // disabled={loading || imageFileUploading}
         >
           Update
-          {/* {loading ? 'Loading...' : 'Update'} */}
         </Button>
-        {/* {currentUser.isAdmin && ( */}
-          <Link to={'/pos'}>
-            <Button
-              type='button'
-              gradientDuoTone='purpleToPink'
-              className='w-full'
-            >
-              Create a post
-            </Button>
-          </Link>
-        {/* )} */}
+        <Link to={'/pos'}>
+          <Button
+            type='button'
+            gradientDuoTone='purpleToPink'
+            className='w-full'
+          >
+            Create a post
+          </Button>
+        </Link>
       </form>
       <div className='text-red-500 flex justify-between mt-5'>
         <span onClick={() => setShowModal(true)} className='cursor-pointer'>
@@ -150,11 +174,6 @@ export default function DashProfile() {
           {updateUserError}
         </Alert>
       )}
-      {/* {error && (
-        <Alert color='failure' className='mt-5'>
-        123
-        </Alert>
-      )} */}
       <Modal
         show={showModal}
         onClose={() => setShowModal(false)}
