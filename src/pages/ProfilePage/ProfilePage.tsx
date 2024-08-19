@@ -4,9 +4,14 @@ import {  Avatar, Button, HR, Sidebar } from 'flowbite-react';
 import About from '../About';
 import { Link } from 'react-router-dom';
 import PostCard from '../../components/PostCard';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
 
 const ProfilePage = () => {
-    const [isFollowing, setIsFollowing] = useState(false);
+  const [isFollowing, setIsFollowing] = useState(false);
+
+  const currentUser = useSelector((state: RootState) => state.user.currentUser);
+
 
   const handleFollowClick = () => {
     setIsFollowing(!isFollowing);
@@ -20,20 +25,15 @@ const ProfilePage = () => {
           className="object-cover w-full h-48"
         />
       </div>
-      {/* <div className="h-56 sm:h-64 xl:h-80 2xl:h-96">
-      <Carousel indicators={false} leftControl=" " rightControl=" "> 
-        <img src="https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/07/anh-bia-dep-10.jpg" />
-      </Carousel>
-      </div> */}
       <div className="flex flex-col p-4 mt-[-5rem] transform">
         {/* Profile Picture */}
         <div className='flex mt-5'> 
         <div className="flex flex-wrap gap-2">
-        <Avatar img="https://dthezntil550i.cloudfront.net/n4/latest/n41611050401464760001833695/1280_960/1128ba0a-efcb-4370-97cf-7704d4c0555d.png" size="xl" rounded bordered />
+        <Avatar img={currentUser?.profilePicture} size="xl" rounded bordered />
         </div>
         {/* Username and Bio */}
         <div className="mt-16 ml-4 ">
-          <h1 className="text-2xl font-bold">Test</h1>
+          <h1 className="text-2xl font-bold">{currentUser?.username}</h1>
         </div>
       </div>
       <div className='flex justify-end   '>
