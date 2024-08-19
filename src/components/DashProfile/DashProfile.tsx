@@ -3,9 +3,10 @@ import { useEffect, useState } from 'react';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { clearUser } from '../../redux/user/UserSlice';
+import { RootState } from '../../redux/store';
 
 export default function DashProfile() {
   const [imageFile, setImageFile] = useState<File | null>(null);
@@ -19,6 +20,8 @@ export default function DashProfile() {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const currentUser = useSelector((state: RootState) => state.user.currentUser);
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -119,7 +122,7 @@ export default function DashProfile() {
             />
           )}
           <img
-            src={imageFilePreview as string || "https://png.pngtree.com/png-vector/20220810/ourmid/pngtree-blogging-concept-picture-writer-laptop-png-image_5722986.png"}
+            src={imageFilePreview as string || currentUser?.profilePicture}
             alt='user'
             className={`rounded-full w-full h-full object-cover border-8 border-[lightgray] ${
               imageFileUploadProgress !== null && imageFileUploadProgress < 100 && 'opacity-60'
@@ -132,11 +135,13 @@ export default function DashProfile() {
         <TextInput
           type='text'
           id='username'
+          value={currentUser?.username}
           placeholder='username'
           onChange={handleChange}
         />
         <TextInput
           type='email'
+          value={currentUser?.email}
           id='email'
           placeholder='email'
           onChange={handleChange}
