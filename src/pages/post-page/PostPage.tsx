@@ -2,13 +2,32 @@ import { Button } from "flowbite-react";
 import { FaThumbsUp  } from 'react-icons/fa';
 import { Link } from "react-router-dom";
 import ComentSesion from "../../components/commetn";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PostCard from "../../components/PostCard";
 import { marked } from "marked";
 
 export default function PostPage() {
   const [liked, setLiked] = useState(false);
+  // const [currentDate, setCurrentDate] = useState<string>("");
+  const [elapsedTime, setElapsedTime] = useState<number>(0);
 
+  useEffect(() => {
+    // Record the initial load time
+    const startTime = Date.now();
+
+    // Update elapsed time every minute (60000 milliseconds)
+    const interval = setInterval(() => {
+      const now = Date.now();
+      const minutesElapsed = Math.floor((now - startTime) / 60000);
+      setElapsedTime(minutesElapsed);
+    }, 1000); // Update every second to ensure the elapsed time is updated frequently
+
+    
+
+ 
+// Clear the interval on component unmount
+    return () => clearInterval(interval);
+  }, []);
   const handleLikeClick = () => {
     setLiked(!liked);
   };
@@ -101,9 +120,8 @@ The web development landscape in 2024 is full of exciting opportunities. From We
       />
       <div className='flex justify-between p-3 border-b border-slate-500 mx-auto w-full max-w-2xl text-xs'>
         <span> { new Date().toLocaleDateString()}</span>
-        <span className='italic'>
-           5 mins read  
-        </span>
+        <span> {elapsedTime} mins</span>
+
       </div>
       <div className='p-3 max-w-2xl mx-auto w-full post-content'>
       <div dangerouslySetInnerHTML={{ __html: postContentHTML }} />
