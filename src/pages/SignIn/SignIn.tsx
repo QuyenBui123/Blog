@@ -19,6 +19,8 @@ export default function SignIn() {
     const testUser = {
       email: 'test@gmail.com',
       password: '123456',
+      profilePicture: 'https://dthezntil550i.cloudfront.net/n4/latest/n41611050401464760001833695/1280_960/1128ba0a-efcb-4370-97cf-7704d4c0555d.png',
+      isAdmin: Boolean,
     }
     localStorage.setItem('testUser', JSON.stringify(testUser))
   }, [])
@@ -30,8 +32,6 @@ export default function SignIn() {
       [name]: value,
     }))
   }
-
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     const storedUser = localStorage.getItem('testUser')
@@ -44,6 +44,7 @@ export default function SignIn() {
           username: 'Test User', 
           email: formValues.email,
           profilePicture: 'https://dthezntil550i.cloudfront.net/n4/latest/n41611050401464760001833695/1280_960/1128ba0a-efcb-4370-97cf-7704d4c0555d.png',
+          isAdmin:true,
         }));
         navigate('/')
       } else {
@@ -53,10 +54,9 @@ export default function SignIn() {
       console.error('No user found in local storage')
     }
   }
-
   return (
     
-    <div className='min-h-screen mt-20' >
+    <div className='min-h-screen mt-20 ' >
       <div className=' flex p-3 max-w-3xl mx-auto flex-col md:flex-row md:items-center gap-5'>
         {/* left */}
         <div className='flex-1'>
