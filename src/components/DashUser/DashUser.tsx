@@ -2,19 +2,60 @@ import { Modal, Table, Button } from 'flowbite-react';
 import {  useState } from 'react';
 
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
-import { FaCheck, FaTimes } from 'react-icons/fa';
+// import { FaCheck, FaTimes } from 'react-icons/fa';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import TableRowComponent from './TableRow';
+
+export interface User {
+  profilePicture: string;
+  username: string;
+  email: string;
+  isAdmin: boolean;
+}
 
 export default function DashUsers() {
   const [showModal, setShowModal] = useState(false);
+  const [, setSelectedUser] = useState<User | null>(null);
+  const currentUser = useSelector((state: RootState) => state.user.currentUser);
+
   const handleShowMore = async () => {
   };
+
   const handleDeleteUser = async () => {
+    setShowModal(false);
   };
+
+  const handleOpenDeleteModal = (user: User) => {
+    setSelectedUser(user);
+    setShowModal(true);
+  };  
+
+  const users: User[] = [];
+    if (currentUser) {
+      users.push(currentUser);
+    }
+    users.push({
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/149/149071.png',
+      username: '123',
+      email: '123@gmail.com',
+      isAdmin: false,
+    },
+    {
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/149/149071.png',
+      username: '123',
+      email: '123@gmail.com',
+      isAdmin: true,
+    }
+  ,{
+    profilePicture: 'https://cdn-icons-png.flaticon.com/512/149/149071.png',
+    username: '123',
+    email: '123@gmail.com',
+    isAdmin: false,
+  });
 
   return (
     <div className='table-auto overflow-x-scroll md:mx-auto p-3 scrollbar scrollbar-track-slate-100 scrollbar-thumb-slate-300 dark:scrollbar-track-slate-700 dark:scrollbar-thumb-slate-500'>
-     
-        
           <Table hoverable className='shadow-md'>
             <Table.Head>
               <Table.HeadCell>Date created</Table.HeadCell>
@@ -26,66 +67,14 @@ export default function DashUsers() {
             </Table.Head>
             
               <Table.Body className='divide-y' key=''>
-                <Table.Row className='bg-white dark:border-gray-700 dark:bg-gray-800'>
-                  <Table.Cell>
-                    {new Date().toLocaleDateString()}
-                  </Table.Cell>
-                  <Table.Cell>
-                    <img
-                      src='https://cdn-icons-png.flaticon.com/512/149/149071.png'
-                      alt='{user.username}'
-                      className='w-10 h-10 object-cover bg-gray-500 rounded-full'
-                    />
-                  </Table.Cell>
-                  <Table.Cell>123</Table.Cell>
-                  <Table.Cell>123@gmail.com</Table.Cell>
-                  <Table.Cell>
-                    
-                      <FaCheck className='text-green-500' />
-                    
-                      {/* <FaTimes className='text-red-500' /> */}
-                    
-                  </Table.Cell>
-                  <Table.Cell>
-                    <span
-                     onClick={() => setShowModal(true)}
-                      className='font-medium text-red-500 hover:underline cursor-pointer'
-                    >
-                      Delete
-                    </span>
-                  </Table.Cell>
-                </Table.Row>
-                <Table.Row className='bg-white dark:border-gray-700 dark:bg-gray-800'>
-                  <Table.Cell>
-                    {new Date().toLocaleDateString()}
-                  </Table.Cell>
-                  <Table.Cell>
-                    <img
-                      src='https://cdn-icons-png.flaticon.com/512/149/149071.png'
-                      alt='{user.username}'
-                      className='w-10 h-10 object-cover bg-gray-500 rounded-full'
-                    />
-                  </Table.Cell>
-                  <Table.Cell>123</Table.Cell>
-                  <Table.Cell>123@gmail.com</Table.Cell>
-                  <Table.Cell>
-                    
-                      {/* <FaCheck className='text-green-500' /> */}
-                    
-                      <FaTimes className='text-red-500' />
-                    
-                  </Table.Cell>
-                  <Table.Cell>
-                    <span
-                     onClick={() => setShowModal(true)}
-                      className='font-medium text-red-500 hover:underline cursor-pointer'
-                    >
-                      Delete
-                    </span>
-                  </Table.Cell>
-                </Table.Row>
+              {users.map((user, index) => (
+            <TableRowComponent
+              key={index}
+              user={user}
+              onDelete={() => handleOpenDeleteModal(user)}
+            />
+          ))}
               </Table.Body>
-           
           </Table>
             <button
               onClick={handleShowMore}
@@ -93,11 +82,7 @@ export default function DashUsers() {
             >
               Show more
             </button>
-          
-        
-      
         {/* <p>You have no users yet!</p> */}
-    
       <Modal
         show={showModal}
         onClose={() => setShowModal(false)}
