@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import ThreeDotMenu from "../ThreeDotMenu";
+import BookMarks from "../ThreeDotMenu/Bookmarks";
 
 const mockPost = {
     postname: 'Test',
@@ -77,7 +78,10 @@ export default function PostCard() {
         />
       </Link>
       <div className='p-3 flex flex-col gap-2'>
-      <div className='flex justify-between'><p className='text-lg font-semibold line-clamp-2'>{mockPost.postname}</p><ThreeDotMenu/></div>
+      <div className='flex justify-between'><p className='text-lg font-semibold line-clamp-2'>{mockPost.postname}</p>
+      <BookMarks/>
+      <ThreeDotMenu/>
+      </div>
         <span className='italic text-sm'>{mockPost.category}</span>
         <Link
           to={`/PostPage`}
