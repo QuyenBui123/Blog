@@ -4,9 +4,15 @@ import PostCard from '../../components/PostCard'
 export default function Home() {
   return (
     <div>
-      <div className='flex flex-col text-center gap-6 p-28 px-3 max-w-6xl mx-auto '>
-        <h1 className='text-3xl font-bold lg:text-6xl'>Welcome to my Blog</h1>
-        <p className='text-gray-500 text-xs sm:text-sm'>
+      <div className='bg-gray-600 bg-cover 
+  bg-center
+  flex 
+  items-center 
+  justify-center'>
+      <div className='  
+      flex flex-col text-center gap-6 p-28 px-3 mt-5  max-w-6xl mx-auto'>
+        <h1 className='text-white text-3xl font-bold lg:text-6xl'>Welcome to my Blog</h1>
+        <p className=' text-white text-xs sm:text-sm'>
           Here you'll find a variety of articles and tutorials on topics such as
           web development, software engineering, and programming languages.
         </p>
@@ -16,6 +22,7 @@ export default function Home() {
         >
           View all posts
         </Link>
+      </div>
       </div>
       {/* <div className='p-3 bg-amber-100 dark:bg-slate-700'>
         <CallToAction />
