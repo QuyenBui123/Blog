@@ -13,6 +13,7 @@ export default function ComentSesion() {
 
   const handleLikeClick = () => {
     setLiked(!liked);}
+    
     const handleDelete = async () => {
       setShowModal(false);
     }

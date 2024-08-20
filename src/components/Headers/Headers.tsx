@@ -53,6 +53,7 @@ export default function Header() {
         <AiOutlineSearch />
       </Button>
       <div className='flex gap-2 md:order-2'>
+      
       <Button
           className='w-12 h-10 hidden sm:inline'
           color='gray'
@@ -67,15 +68,13 @@ export default function Header() {
             arrowIcon={false}
             inline
             label={
-              <Avatar alt='user' img={currentUser.profilePicture} rounded />
+              <Avatar size="md" alt='user' img={currentUser.profilePicture} rounded />
             }
           >
-            <Dropdown.Header>
-              <Link to='/ProfilePage' className=' hover:text-blue-500'><span className='block text-sm' >{currentUser.username}</span>
-              
-              <span className='block text-sm font-medium truncate'>
-                {currentUser.email}
-              </span>
+            <Dropdown.Header className='hover:bg-gray-100 dark:hover:bg-gray-600'>
+              <Link to='/ProfilePage' className='  flex items-center'>
+               <Avatar alt='user' img={currentUser.profilePicture} rounded size="sm"  className=''/>
+               <span className='block text-sm ml-2' >{currentUser.username}</span>
               </Link>
             </Dropdown.Header>
             <Link to={'/dashboard?tab=profile'}>  
@@ -84,6 +83,7 @@ export default function Header() {
             <Dropdown.Divider />
             <Dropdown.Item href='/'>Sign out</Dropdown.Item>
           </Dropdown>
+          
         ) : (
           <Link to='/SignIn'>
             <Button gradientDuoTone='purpleToBlue' outline>

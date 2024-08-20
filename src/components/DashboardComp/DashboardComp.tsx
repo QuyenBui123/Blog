@@ -8,6 +8,8 @@ import {
 } from 'react-icons/hi';
 import { Button, Table } from 'flowbite-react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
 
 const mockPost = {
   postname: 'Test',
@@ -26,6 +28,8 @@ export default function DashboardComp() {
   const [lastMonthUsers] = useState(0);
   const [lastMonthPosts] = useState(0);
   const [lastMonthComments,] = useState(0);
+
+  const currentUser = useSelector((state: RootState) => state.user.currentUser);
   
 
   return (
@@ -86,11 +90,13 @@ export default function DashboardComp() {
         <div className='flex flex-col w-full md:w-auto shadow-md p-2 rounded-md dark:bg-gray-800'>
           <div className='flex justify-between  p-3 text-sm font-semibold'>
             <h1 className='text-center p-2'>Recent users</h1>
+            <Link to={'/dashboard?tab=users'}>
             <Button outline gradientDuoTone='purpleToPink'>
-              <Link to={'/dashboard?tab=users'}>See all</Link>
+              See all
             </Button>
+            </Link>
           </div>
-          <Table hoverable>
+          <Table hoverable >
             <Table.Head>
               <Table.HeadCell>User image</Table.HeadCell>
               <Table.HeadCell>Username</Table.HeadCell>
@@ -101,12 +107,12 @@ export default function DashboardComp() {
                   <Table.Row className='bg-white dark:border-gray-700 dark:bg-gray-800'>
                     <Table.Cell>
                       <img
-                        src="https://png.pngtree.com/png-vector/20220810/ourmid/pngtree-blogging-concept-picture-writer-laptop-png-image_5722986.png"
+                        src={currentUser?.profilePicture}
                         alt='user'
                         className='w-10 h-10 rounded-full bg-gray-500'
                       />
                     </Table.Cell>
-                    <Table.Cell>username</Table.Cell>
+                    <Table.Cell>{currentUser?.username}</Table.Cell>
                   </Table.Row>
                 </Table.Body>
               ))}
@@ -115,9 +121,11 @@ export default function DashboardComp() {
         <div className='flex flex-col w-full md:w-auto shadow-md p-2 rounded-md dark:bg-gray-800'>
           <div className='flex justify-between  p-3 text-sm font-semibold'>
             <h1 className='text-center p-2'>Recent comments</h1>
+            <Link to={'/dashboard?tab=comments'}>
             <Button outline gradientDuoTone='purpleToPink'>
-              <Link to={'/dashboard?tab=comments'}>See all</Link>
+              See all
             </Button>
+            </Link>
           </div>
           <Table hoverable>
             <Table.Head>
@@ -140,9 +148,11 @@ export default function DashboardComp() {
         <div className='flex flex-col w-full md:w-auto shadow-md p-2 rounded-md dark:bg-gray-800'>
           <div className='flex justify-between  p-3 text-sm font-semibold'>
             <h1 className='text-center p-2'>Recent posts</h1>
-            <Button outline gradientDuoTone='purpleToPink'>
-              <Link to={'/dashboard?tab=posts'}>See all</Link>
+             <Link to={'/dashboard?tab=posts'}>
+              <Button outline gradientDuoTone='purpleToPink'>
+            See all
             </Button>
+            </Link>
           </div>
           <Table hoverable>
             <Table.Head>
