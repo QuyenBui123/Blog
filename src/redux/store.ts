@@ -23,14 +23,14 @@
 
 // export const persistor = persistStore(store);
 // export type RootState = ReturnType<typeof rootReducer>;
-import { configureStore } from '@reduxjs/toolkit';
-import themeReducer from './theme/ThemeSlice';
-import userReducer from './user/UserSlice'; // Adjust path as necessary
+import { configureStore } from "@reduxjs/toolkit";
+import themeReducer from "./theme/ThemeSlice";
+import userReducer from "./user/UserSlice"; // Adjust path as necessary
 
 export const store = configureStore({
   reducer: {
     theme: themeReducer,
-    user: userReducer, 
+    user: userReducer,
   },
 });
 

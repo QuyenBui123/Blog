@@ -1,4 +1,4 @@
-import { Button, Select, TextInput } from 'flowbite-react'
+import { Button, Select } from 'flowbite-react'
 import PostCard from '../../components/PostCard'
 export default function Tag() {
   return (

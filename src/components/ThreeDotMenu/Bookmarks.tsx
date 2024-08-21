@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { IoMdBookmarks } from "react-icons/io";
 
 const BookMarks: React.FC = () => {
@@ -9,11 +9,13 @@ const BookMarks: React.FC = () => {
   };
 
   return (
-    <div className="item-center">  
+    <div className="item-center">
       <button
         type="button"
         onClick={handleBookmarkClick}
-        className={`hover:text-black dark:hover:text-blue-500 ${isBookmarked ? 'text-black dark:text-blue-500' : 'text-gray-500'} `}
+        className={`hover:text-black dark:hover:text-blue-500 ${
+          isBookmarked ? "text-black dark:text-blue-500" : "text-gray-500"
+        } `}
       >
         <IoMdBookmarks className="text-2xl" />
       </button>
