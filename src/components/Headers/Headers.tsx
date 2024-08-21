@@ -29,6 +29,9 @@ export default function Header() {
   const handleNavigateCreatPost = () => {
     navigate('/Pos');
   };
+  const handleNavigateTag = () => {
+    navigate('/Tag');
+  };
 
   return (
     <Navbar fluid rounded className='border-b-2'>
@@ -99,6 +102,9 @@ export default function Header() {
         </Navbar.Link>
         <Navbar.Link  onClick={handleNavigateCreatPost} className='cursor-pointer '>
           Creat Post
+        </Navbar.Link>
+        <Navbar.Link onClick={handleNavigateTag} className='cursor-pointer ' >
+          Tags
         </Navbar.Link>
       </Navbar.Collapse>
     </Navbar>
