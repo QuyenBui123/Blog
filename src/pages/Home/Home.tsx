@@ -1,44 +1,39 @@
-import { Link } from 'react-router-dom'
-import PostCard from '../../components/PostCard'
+import React from "react";
+import Sidebar from "../../components/Sidebar";
+import PostCardnew from "../../components/Postcardnew";
 
-export default function Home() {
+const Home: React.FC = () => {
   return (
-    <div>
-      <div className='bg-gray-600 bg-cover 
-  bg-center
-  flex 
-  items-center 
-  justify-center'>
-      <div className='  
-      flex flex-col text-center gap-6 p-28 px-3 mt-5  max-w-6xl mx-auto'>
-        <h1 className='text-white text-3xl font-bold lg:text-6xl'>Welcome to my Blog</h1>
-        <p className=' text-white text-xs sm:text-sm'>
-          Here you'll find a variety of articles and tutorials on topics such as
-          web development, software engineering, and programming languages.
-        </p>
-        <Link
-          to='/search'
-          className='text-xs sm:text-sm text-teal-500 font-bold hover:underline'
-        >
-          View all posts
-        </Link>
-      </div>
-      </div>
-      {/* <div className='p-3 bg-amber-100 dark:bg-slate-700'>
-        <CallToAction />
-      </div> */}
-      <div className='max-w-6xl mx-auto p-3 flex flex-col gap-8 py-7'>
-      <div className='flex flex-col gap-6'>
-            <h2 className='text-2xl font-semibold text-center'>Recent Posts</h2>
-            <PostCard/>
-            <Link
-              to={'/search'}
-              className='text-lg text-teal-500 hover:underline text-center'
-            >
-              View all posts
-            </Link> 
-      </div>
+    <div className="min-h-screen flex flex-col">
+      <div className="flex flex-1 container mx-auto px-4 py-8">
+        <main className="w-full lg:w-3/4 px-4">
+          <PostCardnew
+            title="Modern and colorful style of caricatures created by AI"
+            excerpt="Caricatures have long been a beloved form of art and satire. With the advent of artificial intelligence (AI), the world…"
+            imageUrl="https://themes.estudiopatagon.com/wordpress/wavy/wp-content/uploads/2023/10/Untitled-3-660x660.webp"
+          />
+          <PostCardnew
+            title="Modern and colorful style of caricatures created by AI"
+            excerpt="Caricatures have long been a beloved form of art and satire. With the advent of artificial intelligence (AI), the world…"
+            imageUrl="https://themes.estudiopatagon.com/wordpress/wavy/wp-content/uploads/2023/10/Untitled-3-660x660.webp"
+          />
+          <PostCardnew
+            title="Modern and colorful style of caricatures created by AI"
+            excerpt="Caricatures have long been a beloved form of art and satire. With the advent of artificial intelligence (AI), the world…"
+            imageUrl="https://themes.estudiopatagon.com/wordpress/wavy/wp-content/uploads/2023/10/Untitled-3-660x660.webp"
+          />
+          <PostCardnew
+            title="Modern and colorful style of caricatures created by AI"
+            excerpt="Caricatures have long been a beloved form of art and satire. With the advent of artificial intelligence (AI), the world…"
+            imageUrl="https://themes.estudiopatagon.com/wordpress/wavy/wp-content/uploads/2023/10/Untitled-3-660x660.webp"
+          />
+        </main>
+        <aside className="w-full hidden lg:block lg:w-1/4 px-4">
+          <Sidebar />
+        </aside>
       </div>
     </div>
-  )
-}
+  );
+};
+
+export default Home;
