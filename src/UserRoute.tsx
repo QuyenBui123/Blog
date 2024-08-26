@@ -17,43 +17,43 @@ export default function useRouterElement() {
   const routerElement = useRoutes([
     { path: "/", element: <Home /> },
     {
-      path: "/Dashboard",
+      path: "/dashboard",
       element: <Dashboard />,
     },
     {
-      path: "/SignIn",
+      path: "/signIn",
       element: <SignIn />,
     },
     {
-      path: "SignUp",
+      path: "signUp",
       element: <SignUp />,
     },
     {
-      path: "/About",
+      path: "/about",
       element: <About />,
     },
     {
-      path: "/Search",
+      path: "/search",
       element: <Search />,
     },
     {
-      path: "/PostPage",
+      path: "/postPage",
       element: <PostPage />,
     },
     {
-      path: "/Dashboard",
+      path: "/dashboard",
       element: <Dashboard />,
     },
     {
-      path: "/Three",
+      path: "/three",
       element: <ThreeDotMenu />,
     },
     {
-      path: "/ProfilePage",
+      path: "/profilePage",
       element: <ProfilePage />,
     },
     {
-      path: "/PostCard",
+      path: "/postCard",
       element: <PostCard />,
     },
     {

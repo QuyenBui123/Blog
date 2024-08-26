@@ -1,5 +1,5 @@
 import { Avatar, Button } from "flowbite-react";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { RootState } from "../../redux/store";
 import { useSelector } from "react-redux";

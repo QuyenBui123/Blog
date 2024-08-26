@@ -12,7 +12,7 @@ import Related from "../../components/Sidebar/Related";
 
 const Postpage: React.FC = () => {
   // const [liked, setLiked] = useState(false);
-  const [elapsedTime, setElapsedTime] = useState<number>(0);
+  const [, setElapsedTime] = useState<number>(0);
 
   useEffect(() => {
     const startTime = Date.now();

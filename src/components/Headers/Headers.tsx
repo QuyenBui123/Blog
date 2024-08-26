@@ -2,7 +2,7 @@ import { Avatar, Button, Dropdown, Navbar, TextInput } from "flowbite-react";
 import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 // import { FaSun, FaMoon } from "react-icons/fa";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 // import { toggleTheme } from "../../redux/theme/ThemeSlice";
 import { RootState } from "../../redux/store";
 
@@ -85,7 +85,9 @@ export default function Header() {
               <Dropdown.Item className="bg-pink-50">Profile</Dropdown.Item>
             </Link>
             <Dropdown.Divider />
-            <Dropdown.Item href="/" className="bg-pink-50">Sign out</Dropdown.Item>
+            <Dropdown.Item href="/" className="bg-pink-50">
+              Sign out
+            </Dropdown.Item>
           </Dropdown>
         ) : (
           <Link to="/SignIn">

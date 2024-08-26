@@ -27,14 +27,14 @@
 
 // export const { login, logout } = userSlice.actions;
 // export default userSlice.reducer;
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface UserState {
   currentUser: {
     username: string;
     email: string;
     profilePicture: string;
-    isAdmin:boolean;
+    isAdmin: boolean;
   } | null;
 }
 
@@ -43,10 +43,10 @@ const initialState: UserState = {
 };
 
 const userSlice = createSlice({
-  name: 'user',
+  name: "user",
   initialState,
   reducers: {
-    setUser(state, action: PayloadAction<UserState['currentUser']>) {
+    setUser(state, action: PayloadAction<UserState["currentUser"]>) {
       state.currentUser = action.payload;
     },
     clearUser(state) {
@@ -57,4 +57,3 @@ const userSlice = createSlice({
 
 export const { setUser, clearUser } = userSlice.actions;
 export default userSlice.reducer;
-
