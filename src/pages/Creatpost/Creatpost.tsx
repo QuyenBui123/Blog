@@ -96,7 +96,7 @@ export default function About() {
             <option value="nextjs">Next.js</option>
           </Select>
         </div>
-        <div className="flex gap-4 items-center justify-between border-4 border-teal-500 border-dotted p-3">
+        <div className="flex flex-wrap gap-4 items-center justify-between border-4 border-teal-500 border-dotted p-3">
           <FileInput accept="image/*" onChange={handleFileChange} />
           <Button
             type="button"

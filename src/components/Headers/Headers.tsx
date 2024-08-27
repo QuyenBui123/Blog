@@ -1,4 +1,4 @@
-import { Avatar, Button, Dropdown, Navbar, TextInput } from "flowbite-react";
+import { Avatar, Button, Dropdown, Navbar } from "flowbite-react";
 // import { FaSearch, FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
@@ -6,6 +6,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { useSelector } from "react-redux";
 // import { toggleTheme } from "../../redux/theme/ThemeSlice";
 import { RootState } from "../../redux/store";
+import SearchBar from "../Search/Search";
 
 export interface UserState {
   currentUser: {
@@ -33,8 +34,12 @@ export default function Header() {
   const handleNavigatePost = () => {
     navigate("/blog");
   };
+
+  const handleSearch = (query: string) => {
+    console.log("Tìm kiếm:", query);
+  };
   return (
-    <Navbar fluid rounded className="border-b-2 ">
+    <Navbar fluid rounded className=" lg:mx-20 ">
       <Link
         to="/"
         className="self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white"
@@ -44,18 +49,20 @@ export default function Header() {
         </span>
         Blog
       </Link>
-      <form>
+      {/* <form>
         <TextInput
           type="text"
           placeholder="Search..."
           rightIcon={AiOutlineSearch}
           className="hidden lg:inline"
         />
-      </form>
+      </form> */}
+      <SearchBar onSearch={handleSearch} />
       <Button className="w-12 h-10 lg:hidden" color="gray" pill>
         <AiOutlineSearch />
       </Button>
-      <div className="flex gap-2 md:order-2">
+     <div className=" justify-end flex items-center">
+     <div className="flex gap-2 md:order-2">
         {/* <Button
           className='w-12 h-10 hidden sm:inline'
           color='gray'
@@ -73,24 +80,28 @@ export default function Header() {
               <Avatar alt="user" img={currentUser.profilePicture} rounded />
             }
           >
-            <Dropdown.Header className="bg-pink-50">
-              <Link to="/ProfilePage" className=" hover:text-blue-500 ">
-                <span className="block text-sm ">{currentUser.username}</span>
-
-                <span className="block text-sm font-medium truncate">
-                  {currentUser.email}
+            <Dropdown.Header>
+              <Link
+                to="/ProfilePage"
+                className=" hover:text-blue-500 flex justify-center items-center "
+              >
+                <Avatar
+                  alt="user"
+                  img={currentUser.profilePicture}
+                  size="sm"
+                  rounded
+                />
+                <span className="block text-sm ml-2 ">
+                  {currentUser.username}
                 </span>
               </Link>
             </Dropdown.Header>
             <Link to={"/dashboard?tab=profile"}>
-              <Dropdown.Item className="bg-pink-50">Profile</Dropdown.Item>
+              <Dropdown.Item>Profile</Dropdown.Item>
             </Link>
             <Dropdown.Divider />
-            <Dropdown.Item href="/" className="bg-pink-50">
-              Sign out
-            </Dropdown.Item>
+            <Dropdown.Item href="/">Sign out</Dropdown.Item>
           </Dropdown>
-          
         ) : (
           <Link to="/SignIn">
             <Button gradientDuoTone="purpleToBlue" pill>
@@ -100,10 +111,10 @@ export default function Header() {
         )}
         <Navbar.Toggle />
       </div>
-      <Navbar.Collapse>
+      <Navbar.Collapse className=" mr-4">
         {" "}
         {/*  className='md:block ' */}
-        <Navbar.Link onClick={handleNavigateHome} className="cursor-pointer ">
+        <Navbar.Link onClick={handleNavigateHome} className="cursor-pointer items-center ">
           Home
         </Navbar.Link>
         <Navbar.Link
@@ -116,47 +127,8 @@ export default function Header() {
           Blog
         </Navbar.Link>
       </Navbar.Collapse>
+     </div>
     </Navbar>
-    // <header className="bg-white border-b border-gray-200 shadow-md">
-    //         <div className="container mx-auto flex justify-between items-center py-4 px-6">
-    //             {/* Logo */}
-    //             <div className="flex items-center">
-    //                 <Link to="/" className="text-2xl font-bold text-gray-800">
-    //                     MyBlog
-    //                 </Link>
-    //             </div>
-
-    //             {/* Navigation */}
-    //             <nav className="hidden md:flex space-x-6">
-    //                 <Link to="/" className="text-gray-600 hover:text-gray-800">
-    //                     Home
-    //                 </Link>
-    //                 <Link to="/about" className="text-gray-600 hover:text-gray-800">
-    //                     About
-    //                 </Link>
-    //                 <Link to="/blog" className="text-gray-600 hover:text-gray-800">
-    //                     Blog
-    //                 </Link>
-    //                 <Link to="/contact" className="text-gray-600 hover:text-gray-800">
-    //                     Contact
-    //                 </Link>
-    //             </nav>
-
-    //             {/* Search and Social Icons */}
-    //             <div className="flex items-center space-x-4">
-    //                 <FaSearch className="text-gray-600 cursor-pointer hover:text-gray-800" />
-
-    //                 <a href="#" className="text-gray-600 hover:text-blue-600">
-    //                     <FaFacebookF />
-    //                 </a>
-    //                 <a href="#" className="text-gray-600 hover:text-blue-400">
-    //                     <FaTwitter />
-    //                 </a>
-    //                 <a href="#" className="text-gray-600 hover:text-pink-500">
-    //                     <FaInstagram />
-    //                 </a>
-    //             </div>
-    //         </div>
-    //     </header>
+    
   );
 }

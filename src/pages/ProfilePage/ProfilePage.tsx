@@ -31,7 +31,7 @@ const ProfilePage = () => {
   return (
     <div>
       <div className="mx-4 sm:mx-8 md:mx-12  lg:mx-24 px-5 mb-20 mt-8">
-        <div className="flex flex-col sm:flex-row items-center  shadow-2xl rounded-lg p-6 md:p-10">
+        <div className="flex flex-col sm:flex-row items-center  shadow-2xl rounded-lg p-6 md:p-10 bg-orange-50">
           <Avatar
             alt={author.name}
             img={author.avatarUrl}
@@ -115,6 +115,7 @@ const ProfilePage = () => {
         </div>
       </div>
     </div>
+
   );
 };
 
