@@ -34,7 +34,7 @@ export default function FooterCom() {
               </Footer.LinkGroup>
             </div>
             <div>
-              <Footer.Title title="Fllow us" />
+              <Footer.Title title="Follow us" />
               <Footer.LinkGroup col>
                 <Footer.Link href="#" target="_blank" rel="noopener noreferrer">
                   100 JS Projects

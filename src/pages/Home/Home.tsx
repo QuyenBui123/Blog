@@ -5,7 +5,7 @@ import PostCardnew from "../../components/Postcardnew";
 const Home: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col">
-      <div className="flex flex-1 container mx-auto px-4 py-8">
+      <div className="flex flex-1 container mx-auto lg:px-4 lg:py-8 ">
         <main className="w-full lg:w-3/4 px-4">
           <PostCardnew
             title="Modern and colorful style of caricatures created by AI"

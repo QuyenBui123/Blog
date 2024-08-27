@@ -1,4 +1,5 @@
 import { Avatar, Button, Dropdown, Navbar, TextInput } from "flowbite-react";
+// import { FaSearch, FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 // import { FaSun, FaMoon } from "react-icons/fa";
@@ -33,7 +34,7 @@ export default function Header() {
     navigate("/blog");
   };
   return (
-    <Navbar fluid rounded className="border-b-2 bg-inherit bg-pink-50">
+    <Navbar fluid rounded className="border-b-2 ">
       <Link
         to="/"
         className="self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white"
@@ -116,5 +117,46 @@ export default function Header() {
         </Navbar.Link>
       </Navbar.Collapse>
     </Navbar>
+    // <header className="bg-white border-b border-gray-200 shadow-md">
+    //         <div className="container mx-auto flex justify-between items-center py-4 px-6">
+    //             {/* Logo */}
+    //             <div className="flex items-center">
+    //                 <Link to="/" className="text-2xl font-bold text-gray-800">
+    //                     MyBlog
+    //                 </Link>
+    //             </div>
+
+    //             {/* Navigation */}
+    //             <nav className="hidden md:flex space-x-6">
+    //                 <Link to="/" className="text-gray-600 hover:text-gray-800">
+    //                     Home
+    //                 </Link>
+    //                 <Link to="/about" className="text-gray-600 hover:text-gray-800">
+    //                     About
+    //                 </Link>
+    //                 <Link to="/blog" className="text-gray-600 hover:text-gray-800">
+    //                     Blog
+    //                 </Link>
+    //                 <Link to="/contact" className="text-gray-600 hover:text-gray-800">
+    //                     Contact
+    //                 </Link>
+    //             </nav>
+
+    //             {/* Search and Social Icons */}
+    //             <div className="flex items-center space-x-4">
+    //                 <FaSearch className="text-gray-600 cursor-pointer hover:text-gray-800" />
+
+    //                 <a href="#" className="text-gray-600 hover:text-blue-600">
+    //                     <FaFacebookF />
+    //                 </a>
+    //                 <a href="#" className="text-gray-600 hover:text-blue-400">
+    //                     <FaTwitter />
+    //                 </a>
+    //                 <a href="#" className="text-gray-600 hover:text-pink-500">
+    //                     <FaInstagram />
+    //                 </a>
+    //             </div>
+    //         </div>
+    //     </header>
   );
 }

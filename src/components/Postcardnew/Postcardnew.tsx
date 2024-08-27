@@ -46,17 +46,17 @@ const PostCardnew: React.FC<PostCardProps> = ({ title, excerpt, imageUrl }) => {
     return () => clearInterval(interval);
   }, []);
   return (
-    <div className="  sm:flex shadow-md rounded-lg overflow-hidden mb-20 ">
+    <div className="  md:flex shadow-md rounded-lg overflow-hidden mb-10  ">
       <div>
         <img
           src={imageUrl}
-          alt={title}
-          className="w-full max-w-full h-auto rounded-lg object-cover max-h-80 "
+          alt={title} 
+          className="w-full max-w-full h-auto rounded-lg object-cover max-h-80 md:max-h-[420px] lg:max-h-[460px] "
         />
       </div>
       <div className="p-5 w-full  h-auto  rounded-lg flex flex-col justify-between ">
         <div className=" flex justify-between">
-          <h2 className="text-2xl font-semibold text-primary">{title}</h2>
+          <h2 className="text-lg sm:text-xl lg:text-2xl font-semibold text-primary">{title}</h2>
           <ThreeDotMenu />
         </div>
 
@@ -75,7 +75,7 @@ const PostCardnew: React.FC<PostCardProps> = ({ title, excerpt, imageUrl }) => {
           <span className="ml-2 mr-2 text-red-500 ">~</span>
           <span>{formatDate(postDate)}</span>
         </div>
-        <p className="text-secondary mt-2">{excerpt}</p>
+        <p className=" text-sm sm:text-base lg:text-lg mt-2">{excerpt}</p>
         <div className="flex justify-between items-center ">
           <Link to={`/PostPage`}>
             <Button href="#" gradientMonochrome="failure">
