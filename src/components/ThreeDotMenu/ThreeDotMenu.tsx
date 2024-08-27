@@ -1,14 +1,17 @@
 import { ListGroup } from "flowbite-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaEllipsisV, FaFacebook } from "react-icons/fa";
 import { FiShare, FiLink, FiFlag } from "react-icons/fi";
 import BookMarks from "./Bookmarks";
 
 const ThreeDotMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+
   const handleMenuClick = () => {
     setIsOpen(!isOpen);
   };
+
   const handleShareFacebook = () => {
     const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
       window.location.href
@@ -53,8 +56,21 @@ const ThreeDotMenu = () => {
   const handleReport = () => {
     alert("Report clicked");
   };
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
   return (
-    <div className="flex items-center">
+    <div className="flex items-center" ref={menuRef}>
       <button>
         <BookMarks />{" "}
       </button>
