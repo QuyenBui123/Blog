@@ -75,7 +75,7 @@ const Header: React.FC = () => {
             >
               <Dropdown.Header>
                 <Link
-                  to="/profile"
+                  to="/profilePage"
                   className="hover:text-blue-500 flex justify-center items-center"
                 >
                   <Avatar
