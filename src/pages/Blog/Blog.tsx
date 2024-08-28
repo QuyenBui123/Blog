@@ -3,7 +3,6 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Avatar, Badge, Button } from "flowbite-react";
 
-// src/data/mockData.js
 export const categories = [
   { id: 2, name: "Buildings" },
   { id: 3, name: "Technology" },
@@ -52,11 +51,11 @@ const Blog = () => {
   const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
 
   const badgeColors = [
-    "gray", // Gray
-    "failure", // Red
-    "success", // Green
-    "warning", // Yellow
-    "indigo", // Indigo
+    "gray", 
+    "failure", 
+    "success", 
+    "warning", 
+    "indigo",
   ];
   const filteredPosts = selectedCategory
     ? posts.filter((post) => post.categoryIds.includes(selectedCategory))
@@ -131,7 +130,7 @@ const Blog = () => {
                   </Button>
                 </Link>
                 <span className="flex items-center">
-                  {/* Replace with actual read time calculation */}5 min read
+                  5 min read
                 </span>
               </div>
             </div>
