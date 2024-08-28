@@ -1,4 +1,4 @@
-import { Avatar, Button } from "flowbite-react";
+import { Avatar, Badge, Button } from "flowbite-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { RootState } from "../../redux/store";
@@ -84,7 +84,16 @@ const Blog = () => {
   }, []);
   return (
     <div className="container mx-auto px-4 py-8">
-      <h2 className="text-3xl font-bold text-center mb-8">Latest Posts</h2>
+          <div className="flex flex-wrap gap-2">
+      <Badge color="info" className="text-base">Category:</Badge>
+      <Badge color="gray" >Technology</Badge>
+      <Badge color="failure">Buildings</Badge>
+      <Badge color="success">Sports</Badge>
+      <Badge color="warning">Nature</Badge>
+      <Badge color="indigo">Design</Badge>
+
+    </div>
+      <h2 className="text-3xl font-bold text-center mb-8 mt-5">Latest Posts</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
         {posts.map((post, index) => (
           <div key={index} className=" rounded-lg shadow-lg overflow-hidden">
