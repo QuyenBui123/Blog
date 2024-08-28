@@ -110,7 +110,7 @@ export default function SignIn() {
           </form>
           <div className="mt-2">
             <span>Don't Have an account?</span>
-            <Link to="/SignUp" className="text-blue-500">
+            <Link to="/sign-up" className="text-blue-500">
               {" "}
               Sign Up
             </Link>

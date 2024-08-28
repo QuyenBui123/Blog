@@ -21,11 +21,11 @@ export default function useRouterElement() {
       element: <Dashboard />,
     },
     {
-      path: "/signIn",
+      path: "/sign-in",
       element: <SignIn />,
     },
     {
-      path: "signUp",
+      path: "sign-up",
       element: <SignUp />,
     },
     {
@@ -37,7 +37,7 @@ export default function useRouterElement() {
       element: <Search />,
     },
     {
-      path: "/postPage",
+      path: "/post-page",
       element: <PostPage />,
     },
     {
@@ -49,11 +49,11 @@ export default function useRouterElement() {
       element: <ThreeDotMenu />,
     },
     {
-      path: "/profilePage",
+      path: "/profile-page",
       element: <ProfilePage />,
     },
     {
-      path: "/postCard",
+      path: "/post-card",
       element: <PostCard />,
     },
     {

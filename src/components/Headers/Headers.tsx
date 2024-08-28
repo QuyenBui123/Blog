@@ -15,7 +15,7 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header  className="bg-white shadow-md">
+    <header className="bg-white shadow-md">
       <div className="container mx-auto flex items-center justify-between py-4 px-6">
         {/* Logo */}
         <Link to="/" className="text-xl font-bold text-gray-800">
@@ -75,7 +75,7 @@ const Header: React.FC = () => {
             >
               <Dropdown.Header>
                 <Link
-                  to="/profilePage"
+                  to="/profile-page"
                   className="hover:text-blue-500 flex justify-center items-center"
                 >
                   <Avatar
@@ -96,7 +96,7 @@ const Header: React.FC = () => {
               <Dropdown.Item href="/">Sign out</Dropdown.Item>
             </Dropdown>
           ) : (
-            <Link to="/signIn">
+            <Link to="/sign-in">
               <Button gradientMonochrome="purple">Sign In</Button>
             </Link>
           )}

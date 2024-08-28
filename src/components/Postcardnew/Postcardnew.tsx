@@ -45,6 +45,7 @@ const PostCardnew: React.FC<PostCardProps> = ({ title, excerpt, imageUrl }) => {
     // Clear the interval on component unmount
     return () => clearInterval(interval);
   }, []);
+  
   return (
     <div className="  md:flex shadow-md rounded-lg overflow-hidden mb-10  ">
       <div>
@@ -56,7 +57,9 @@ const PostCardnew: React.FC<PostCardProps> = ({ title, excerpt, imageUrl }) => {
       </div>
       <div className="p-5 w-full  h-auto  rounded-lg flex flex-col justify-between ">
         <div className=" flex justify-between">
+          <Link to="post-page">
           <h2 className="text-lg sm:text-xl lg:text-2xl font-semibold text-primary">{title}</h2>
+          </Link>
           <ThreeDotMenu />
         </div>
 
@@ -69,15 +72,17 @@ const PostCardnew: React.FC<PostCardProps> = ({ title, excerpt, imageUrl }) => {
             className=" pr-2"
           />
           By
-          <span className="ml-2 mr-2 text-red-500 hover:text-gray-800">
+          <Link to="/profile-page">
+          <span className="ml-2 mr-2 text-red-500 hover:text-gray-800 ">
             {currentUser?.username}
           </span>
+          </Link>
           <span className="ml-2 mr-2 text-red-500 ">~</span>
           <span>{formatDate(postDate)}</span>
         </div>
         <p className=" text-sm sm:text-base lg:text-lg mt-2">{excerpt}</p>
         <div className="flex justify-between items-center ">
-          <Link to={`/PostPage`}>
+          <Link to={`/post-page`}>
             <Button href="#" gradientMonochrome="failure">
               Read More
             </Button>

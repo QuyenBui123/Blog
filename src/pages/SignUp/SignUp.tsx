@@ -43,7 +43,7 @@ export default function SignUp() {
           </form>
           <div className="mt-2">
             <span>Have an account?</span>
-            <Link to="/SignIn" className="text-blue-500">
+            <Link to="/sign-in" className="text-blue-500">
               {" "}
               Sign In
             </Link>
